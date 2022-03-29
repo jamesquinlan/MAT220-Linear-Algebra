@@ -39,4 +39,14 @@ Furthermore, MAT220 will help students build *mathematical habits of mind* by:
 
 
 
+# Textbook
+
+```
+@book{leon2014linear,
+ title={Linear algebra with applications},
+ author={Leon, Steven J and De Pillis, Lisette and De Pillis, Lisette G},
+ year={2014},
+ publisher={Pearson}
+}
+```
 
