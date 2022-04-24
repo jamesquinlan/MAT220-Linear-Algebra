@@ -1,0 +1,76 @@
+ 
+
+
+%\subsubsection*{Objectives}
+%\begin{itemize}
+%	\item Calculate length of a vector
+%	\item Calculate dot products
+%	\item Use dot product to determine  
+%\end{itemize}
+
+
+
+\subsubsection*{Learning outcomes}
+Be able to:
+\begin{itemize}
+	 % \item Identify a $m \times n$ matrix
+	\item Use SVD to perform PCA
+\end{itemize}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+\begin{example}
+Given the following scores for a class of math students, we wish to determine which has the most impact on their overall score.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+\textbf{Student} & \textbf{Homework} & \textbf{Midterm} & \textbf{Final Exam} \\
+\midrule
+S1 & 198 & 200 & 196  \\
+S2 & 160 & 165 & 165  \\
+S3 & 158 & 158 & 133  \\
+S4 & 150 & 165 & 91  \\
+S5 & 175 & 182 & 151  \\
+S6 & 134 & 135 & 101  \\
+S7 & 152 & 136 & 80  \\
+\bottomrule
+\end{tabular}
+\caption{Scores for seven students}
+\end{center}
+
+\label{default}
+\end{table}%
+
+
+
+Proceed as follows:
+
+\begin{enumerate}
+	\item Find the mean of each column (i.e., mean of the midterm exam).  
+	
+	\item Subtract the mean from all entries in the column.  This is ``normalizing" the data.  This new matrix will be called $A$.
+	
+	\item Compute the covariance matrix:  $S = \frac{1}{n-1} A^TA$.  Interpret $S$.  What are the diagonal entries?  Off-diagonal entries?
+	
+	\item Find the eigenvalues and eigenvectors of $S$.  These will be used to find the singular values and right singular vectors (i.e., \textit{principle components}).  
+	
+	
+\end{enumerate}	
+\end{example}
+
+%
+%%
+%%%						  
+%%%% SECTION:  Matrices
+%%%
+%%
+%
+ 
+

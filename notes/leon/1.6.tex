@@ -1,0 +1,219 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+Partitioning a matrix into  submatrix \textit{blocks} has broad utility and can lead to incredible insights \cite{carlsonmaa59}.  In particular, partitioning can be used in linear algebra proofs.   
+\section*{Objectives}
+\begin{enumerate}
+	\item Introduce and define Block matrices
+	\item State basic rules for Block multiplication   
+	 \end{enumerate}
+
+
+
+ 
+
+\begin{example} Partition a matrix using horizontal and vertical lines.  The example below uses only one horizontal and one vertical.
+\[ \begin{bmatrix}[cc|c]  
+  	1  &   1 &    2 \\
+     	3  &    2  &    1\\
+	\hline
+     	0  &    1   &  3
+     \end{bmatrix}  \]	
+\end{example}
+ 
+\begin{example} Partitioned matrix into nine blocks:
+\[ A = \begin{bmatrix}[cc|cc|c]  
+  	1  &   1 &    2 & 4 & 5 \\
+     	3  &    2  &    1 & 3 & 1 \\
+	\hline
+     	0  &    1   &  3 & 7 & 2 \\ 
+	2  &    1   &  1 & 1 & 0 \\ 
+	\hline
+	1  &   3   &  0 & 1 & 1
+     \end{bmatrix}  = \begin{bmatrix} A_{11} &  A_{12} &  A_{13} \\  A_{21} &  A_{22} &  A_{23} \\  A_{31} &  A_{32} &  A_{33} \end{bmatrix} \]	
+\end{example}
+
+
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+
+ 
+%\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+\section*{Block Multiplication}
+Let $A$ be an $m \times n$ matrix and $B$ an $n \times p$. 
+
+\begin{enumerate}
+	\item If $B = \begin{bmatrix} B_1 &	B_2 \end{bmatrix}$ where $B_1$ is an $n \times k$ matrix and $B_2$ is an $n \times (p-k)$ matrix, then
+	\begin{align*}
+	 AB 	&= A ({\bf b}_1, \dots, {\bf b}_k, {\bf b}_{k+1}, \dots, {\bf b}_p) \\
+	 	&= (A{\bf b}_1, \dots, A{\bf b}_k, A{\bf b}_{k+1}, \dots, A{\bf b}_p)\\
+		&= (A({\bf b}_1, \dots, {\bf b}_k), A({\bf b}_{k+1}, \dots, {\bf b}_p))\\
+		&= \begin{bmatrix} AB_1	& 	AB_2 \end{bmatrix}
+	\end{align*}
+	
+	Thus, the matrix $A$ acts like a scalar,
+	
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+	\[
+	AB = A \begin{bmatrix} B_1	& 	B_2 \end{bmatrix} =  \begin{bmatrix} AB_1	& 	AB_2 \end{bmatrix} 
+	\]
+	\end{tcolorbox}
+	
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+	
+	% case 2
+	\item Let $A_1$ be a $k \times n$ matrix and $A_2$ is an $(m - k) \times n$ matrix.  If $A = \begin{bmatrix} A_1 \\ A_2 \end{bmatrix}$
+	then 
+	
+ 	\[ AB = \begin{bmatrix} A_1 \\ A_2 \end{bmatrix} B = \begin{bmatrix} \vec{{\bf a}}_1  \\ \vdots   \\ \vec{{\bf a}}_k \\ \hline \vec{{\bf a}}_{k+1} \\ \vdots \\  \vec{{\bf a}}_m  \end{bmatrix} B = \begin{bmatrix} \vec{{\bf a}}_1 B  \\ \vdots   \\ \vec{{\bf a}}_k B \\ \hline \vec{{\bf a}}_{k+1} B \\ \vdots \\  \vec{{\bf a}}_m B  \end{bmatrix} =  \begin{bmatrix}  \begin{bmatrix} \vec{{\bf a}}_1   \\ \vdots   \\ \vec{{\bf a}}_k  \end{bmatrix}  B  \\  \\  \begin{bmatrix} \vec{{\bf a}}_{k+1}  \\ \vdots \\  \vec{{\bf a}}_m  \end{bmatrix}  B \end{bmatrix}  = \begin{bmatrix} A_1 B \\ A_2 B \end{bmatrix} \]
+ 	
+	
+	
+	
+	
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+	\[ AB = \begin{bmatrix} A_1 \\ A_2 \end{bmatrix} B = \begin{bmatrix} A_1 B \\ A_2 B \end{bmatrix} \]
+	\end{tcolorbox}
+	
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+	
+	\item Let $A = \begin{bmatrix} A_1 & A_2 \end{bmatrix}$ where $A_1$ be  a $m \times r$ matrix,  $A_2$ is an $m \times (n - r)$ matrix, and $B = \begin{bmatrix} B_1 \\ B_2 \end{bmatrix}$ matrix with $B_1$ an $r \times q$ matrix and $B_2$ a $(n - r) \times q$ matrix.  Then,     
+	
+		\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+$$AB = \begin{bmatrix} A_1 & A_2 \end{bmatrix} \begin{bmatrix} B_1 \\ B_2 \end{bmatrix} = A_1B_1 +  A_2B_2$$
+	\end{tcolorbox}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\item In general, if the blocks have the proper dimensions, then block multiplication can be carried out in the same manner as ordinary  matrix multiplication.  In particular, if
+\[ A =  \begin{bmatrix}  A_{11} & \dots & A_{1n}\\ \vdots & & \vdots \\ A_{m1} & \dots & A_{mn} \end{bmatrix}  \text{\;\;\; and \;\;\;} B =  \begin{bmatrix}  B_{11} & \dots & B_{1p}\\ \vdots & & \vdots \\ B_{n1} & \dots & B_{np} \end{bmatrix}  \]
+then
+		\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\[ AB =  \begin{bmatrix}  C_{11} & \dots & C_{1p}\\ \vdots & & \vdots \\ C_{m1} & \dots & C_{mp} \end{bmatrix} \]
+where
+\[   C_{ij} = \sum_{k=1}^n  A_{ik}B_{kj} \]
+	\end{tcolorbox}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\item $A B = A \begin{bmatrix} {\bf b}_1 & \dots & {\bf b}_k \end{bmatrix} = (A{\bf b}_1, A{\bf b}_2, \dots, A {\bf b}_k)$.
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\end{enumerate}
+ 
+ 
+ 
+ \begin{theorem}
+ If $A$ is an $n \times n$ block diagonal matrix of the form
+ \[  A = \begin{bmatrix}  A_{11}   &  O \\ O  &  A_{22}  \end{bmatrix} \]
+ where $A_{11}$ is  $k \times k$ ($k<n$) and $A_{22}$ is $(n-k) \times (n-k)$, then $A$ is nonsingular if and only if $A_{11}$ and $A_{22}$ are nonsingular.\
+ 
+ \begin{proof}
+ 	%  -->
+ 	($\Rightarrow$)   Assume $A$ is nonsingular and let $B = A^{-1}$.  Partition $B$ in same way as $A$, then . 
+	 \[   \begin{bmatrix}  A_{11}^{-1}   &  O \\ O  &  A_{22}^{-1}  \end{bmatrix}  \begin{bmatrix}  B_{11}   &  B_{12} \\ B_{21}  & B_{22}  \end{bmatrix}  =  \begin{bmatrix}  I_{k}   &  O \\ O  &  I_{n-k}  \end{bmatrix}   \]
+
+	and
+	 
+	 \[   \begin{bmatrix}  B_{11}   &  B_{12} \\ B_{21}  & B_{22}  \end{bmatrix}   \begin{bmatrix}  A_{11}^{-1}   &  O \\ O  &  A_{22}^{-1}  \end{bmatrix}  =  \begin{bmatrix}  I_{k}   &  O \\ O  &  I_{n-k}  \end{bmatrix}   \]
+	
+	Using \#4 above we have
+	\[  B_{11}  A_{11}^{-1}  = I_k  =  A_{11}^{-1}B_{11}    \text{\;\;\;\;  and \;\;\;\; } B_{22} A_{22}^{-1}  =  I_{n-k}  = A_{22}^{-1} B_{22} \]
+	
+	
+	
+	Hence, $A_{11}$ and $A_{22}$  are both nonsingular with inverses $B_{11}$ and $B_{22}$, respectively.
+	
+		% <--
+	($\Leftarrow$) Suppose $A_{11}$ and $A_{22}$ are nonsingular, then 
+	\[   \begin{bmatrix}  A_{11}   &  O \\ O  &  A_{22}  \end{bmatrix}  \begin{bmatrix}  A_{11}^{-1}   &  O \\ O  &  A_{22}^{-1}  \end{bmatrix}  =  \begin{bmatrix}  I_{k}   &  O \\ O  &  I_{n-k}  \end{bmatrix} = I  \]
+	
+	and 
+	\[  \begin{bmatrix}  A_{11}^{-1}   &  O \\ O  &  A_{22}^{-1}  \end{bmatrix}   \begin{bmatrix}  A_{11}   &  O \\ O  &  A_{22}  \end{bmatrix}    =  \begin{bmatrix}  I_{k}   &  O \\ O  &  I_{n-k}  \end{bmatrix} = I  \]
+Therefore, 
+\[  A^{-1} = \begin{bmatrix}  A_{11}^{-1}   &  O \\ O  &  A_{22}^{-1}  \end{bmatrix}  \]	 
+ \end{proof}
+ \end{theorem}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\section*{Summary}
+
+
+ %In this section we 
+%\begin{enumerate}
+%	\item Introduced and defined elementary matrices
+%	\item Enumerated three equivalent conditions for nonsingularity 
+%	\item Defined and discussed triangular (upper \& lower) and diagonal matrices
+%	\item Used the inverse of the product of a finite sequence of elementary matrices in part of the factorization of %matrix $A$ 
+	
+	
+% \end{enumerate}
+ 
+
+
+
+\section*{Next time...}
+Section 2.1 - 2.3:  Determinants
+

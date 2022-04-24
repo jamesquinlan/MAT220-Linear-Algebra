@@ -1,0 +1,105 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Define scalar product in $\mathbb{R}^n$ and alternative defintion
+	\item Euclidean length 
+	\item Define distance between two vectors
+    	\item State and prove the Cauchy-Schwartz Inequality
+	\item Define orthogonality, scalar and vector project
+	\item Consider a couple of applications of scalar product
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Scalar Product}
+
+\begin{definition}
+	Given two vectors ${\bf x}$ and ${\bf y}$ in $\mathbb{R}^n$, we define the \textbf{scalar product} as a $1 \times 1$ matrix (i.e., scalar)
+	\[  {\bf x}^T {\bf y} = x_1 y_1 + x_2 y_2 + \cdot + x_n y_n \] 
+\end{definition}
+ 
+ 
+ \begin{example}
+ 	The scalar product of ${\bf x} = (3, 2, 1)^T$ and ${\bf y} = (5, -4, 3)^T$ is
+		\[ {\bf x}^T {\bf y} = (3, 2, 1) \begin{bmatrix} 5 \\ -4 \\3 \end{bmatrix} = 3 \cdot 5 + 2 \cdot (-4) + 1 \cdot 3 = 10 \]
+ \end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\section{Euclidean Length}
+
+Given a vector ${\bf x} \in \mathbb{R}^n$, its \textbf{Euclidean length} is given by
+\[  || {\bf x} || = ({\bf x}^T {\bf x})^{1/2} = \sqrt{\sum_{i=1}^n x_i^2} \]
+%A geometric significance of the scalar product
+
+
+
+
+
+
+
+\section{Distance between vectors}
+
+
+\begin{definition}
+	Let ${\bf x}$ and ${\bf y}$  be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$.  The distance between ${\bf x}$ and ${\bf y}$ is defined to by $|| {\bf x} - {\bf y} ||$.
+	
+\end{definition}
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+\begin{theorem}
+	If ${\bf x}$ and ${\bf y}$ are vectors and $\theta$ is the angle between them, then
+	\[  {\bf x}^T {\bf y}   = || {\bf x} || \;  || {\bf y} || \cos \theta \]
+	
+	\begin{proof}
+		Note: $|| {\bf x}||^2 = {\bf x}^T {\bf x}$.    
+		
+		
+		By the Law of Cosines ($c^2 = a^2 + b^2 - 2ab \cos \theta$) we have
+		\[ 			|| {\bf y} - {\bf x} ||^2 = ||{\bf x}||^2 + ||{\bf y}||^2 - 2  \, || {\bf x}||  \, ||{\bf y}|| \cos \theta \] 
+		and so we have, 
+		\begin{align*}
+			 || {\bf x}|| ||{\bf y}|| \cos \theta  &= \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - || {\bf y} - {\bf x} ||^2 \right) \\
+			 &=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf y} - {\bf x})^T({\bf y} - {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf x}^T - {\bf y}^T)({\bf y} - {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf x}^T{\bf y}  - {\bf x}^T  {\bf x} - {\bf y}^T {\bf y} + {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + {\bf x}^T  {\bf x} + {\bf y}^T {\bf y} -  {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + ||{\bf x}||^2  +  ||{\bf y}||^2 -  {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + ||{\bf x}||^2  +  ||{\bf y}||^2 -  {\bf y}^T {\bf x})   \right) 
+		\end{align*}
+	\end{proof}
+\end{theorem}
+
+
+
+%${\bf v} \to {\bf w}$ is the same as:
+%\begin{enumerate}
+%\item Find the coordinate vector of ${\bf v}$ with respect to the ordered basis $E$
+%\item 
+%\end{enumerate}
+
+\section*{Next time...}
+Section 5.3: Least Squares Problem
+

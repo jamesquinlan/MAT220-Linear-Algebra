@@ -1,0 +1,363 @@
+%\subsubsection*{Objectives}
+%\begin{itemize}
+%	\item Calculate length of a vector
+%	\item Calculate dot products
+%	\item Use dot product to determine  
+%\end{itemize}
+
+
+
+\subsubsection*{Learning outcomes}
+Be able to:
+\begin{itemize}
+	\item Introduce elementary matrices and their inverses
+	\item Assemble individual elementary matrices into one elimination matrix $E$
+	\item Invert elementary matrices
+	\item Introduce matrix factorizations (i.e., $LU$ factorization)
+	
+	\item State equivalent conditions for nonsingularity
+	
+\end{itemize}
+
+
+
+
+
+
+
+
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+We can use matrix multiplication instead of row operations to solve a linear system of equations $A {\bf x} = {\bf b}$.  The matrices we use in the multiplication are called \textit{elementary matrices}.  Additionally, elementary matrices are useful to $LU$ factorization of a matrix $A$.
+
+
+
+
+
+\section*{Content Material}
+
+\begin{enumerate}
+\item  \textbf{Elementary Matrices}:  There are three type of elementary matrices corresponding to the three row operations.  All matrices are $n \times n$.  Note, the parenthetical subscripts are used only temporarily to indicate the \textit{Type} of row operation it corresponds with and will be dropped in practice. 
+
+\begin{enumerate}
+	\item[Type I:]  Interchanges rows (pre-multiplication) or columns (post-multiplication).  $E_{(1)}$ is nonsingular and an involution, i.e., $E_{(1)}^2 = I$.
+	\[ E_{(1)} = 	\begin{bmatrix}   \vec{{\bf e}_1} \\   \vdots \\ \vec{{\bf e}_j} \\ \vdots \\ \vec{{\bf e}_i} \\ \vdots \\ \vec{{\bf e}_n} \end{bmatrix}  \begin{matrix}  \text{ \; }   \\   \text{ \; }   \\     \leftarrow i \text{th row} \\ \text{ \; }  \\ \leftarrow  j \text{th row} \\  \text{ \; }  \\ \text{ \; }  \end{matrix}  \]	
+	
+	
+	\item[Type II:]  Scale a row (pre-multiplication) or column (post-multiplication)
+	\[ E_{(2)} = \begin{bmatrix}  1 &  &  &    & & &   \\  &  \ddots & & & O  & & \\ & & 1 & & & &  \\ & & & \alpha & & & \\  & & & & 1 & & \\ & O & & & & \ddots & \\ & & & & & & 1   \end{bmatrix}  \begin{matrix} \text{ \; }   \\   \text{ \; }   \\   \text{ \; }  \\  \leftarrow  i \text{th row}    \\ \text{ \; } \\ \text{ \; }  \\ \text{ \; } \end{matrix}  \]
+	
+	
+	
+	
+	\item[Type III:]  Adding a multiple of one row (pre-multiplication) or column (post-multiplication) to another row or column.  In particular, starting with identity matrix $I$, set the $(i,j)$ entry to $k$, that is $I(i,j) = k$.  Premultiplication effectively \textit{multiplies row $j$ by $k$ and adds to row $i$.}  Another way, $$i \text{-th row} = k \times j\text{-th row} + i\text{-th row}$$
+	
+	\[ E_{(3)}= \begin{bmatrix}    1 &   & &    & & &   \\  \vdots &  \ddots & & & O  & & \\  0  & \cdots & 1 & & & &  \\ \vdots & & & \ddots &  & & \\  0 & \cdots  & k & & 1 & & \\ \vdots &  & & & & \ddots & \\ 0 & \cdots & 0 & \cdots & 0 & \cdots & 1   \end{bmatrix}  \begin{matrix} \text{ \; }   \\   \text{ \; }   \\  \leftarrow  j \text{th row}   \\   \text{\;}  \\  \leftarrow i \text{th row}  \\ \text{ \; }  \\ \text{ \; } \end{matrix}  \]
+	
+	
+
+\end{enumerate}
+
+
+%%%%%%%%%
+\item \textbf{Inverse of elementary matrix}
+\begin{enumerate}
+	\item   Interchange the rows (columns) again. $$E_{(1)}^{-1} = E_{(1)}$$
+	 	
+	
+	\item   Scale a row by $1/ \alpha$.
+	\[ E_{(2)}^{-1} = \begin{bmatrix}  1 &  &  &    & & &   \\  &  \ddots & & & O  & & \\ & & 1 & & & &  \\ & & &1/ \alpha & & & \\  & & & & 1 & & \\ & O & & & & \ddots & \\ & & & & & & 1   \end{bmatrix}  \begin{matrix} \text{ \; }   \\   \text{ \; }   \\   \text{ \; }  \\  \leftarrow  i \text{th row}    \\ \text{ \; } \\ \text{ \; }  \\ \text{ \; } \end{matrix}  \]
+	
+	
+	
+	
+	\item  Replace $k$ with $-k$.
+	
+	\[ E_{(3)}^{-1}= \begin{bmatrix}    1 &   & &    & & &   \\  \vdots &  \ddots & & & O  & & \\  0  & \cdots & 1 & & & &  \\ \vdots & & & \ddots &  & & \\  0 & \cdots  & -k & & 1 & & \\ \vdots &  & & & & \ddots & \\ 0 & \cdots & 0 & \cdots & 0 & \cdots & 1   \end{bmatrix}  \begin{matrix} \text{ \; }   \\   \text{ \; }   \\  \leftarrow  j \text{th row}   \\   \text{\;}  \\  \leftarrow i \text{th row}  \\ \text{ \; }  \\ \text{ \; } \end{matrix}  \]
+	
+
+\end{enumerate}
+%%%%%%%%%
+
+
+\begin{example} Suppose 
+$$ A = \begin{bmatrix}  1& 1& 2\\ 3 & 2 & 1 \\  {\circled{2}}  & 3  &  1 \end{bmatrix} $$ 
+To eliminate the $2$ in $A(3,1)$, we can multiply Row $1$ by $-2$ and add to Row 3.  The corresponding elementary matrix is:
+
+$$ E = \begin{bmatrix}  1& 0& 0\\ 0 & 1 & 0 \\ -2  &  0  &  1 \end{bmatrix} $$ 
+then
+ \begin{align*}
+  EA  &= \begin{bmatrix}  1& 0& 0\\ 0 & 1 & 0 \\ -2  &  0  &  1 \end{bmatrix}  \begin{bmatrix}  1& 1& 2\\ 3 & 2 & 1 \\  {{2}}  & 3  &  1 \end{bmatrix} \\
+  &= 
+  \begin{bmatrix}  
+  	1  &   1 &    2 \\
+     	3  &    2  &    1\\
+     	0  &    1   &  -3
+     \end{bmatrix}
+ \end{align*}
+  \end{example}
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\item \textbf{Row Equivalency of Matrices}  
+\begin{definition}
+Matrix $B$ is \textit{row equivalent} to matrix $A$ if there exists a finite sequence  of elementary matrices, $E_1, E_2, E_3, \dots, E_k$,  such that
+\[ B =  E_1	E_2		E_3 	 	\dots		 E_k		 A \]
+\end{definition}
+
+
+\begin{theorem}
+The product $E_1	E_2		E_3 	 	\dots		 E_k	$ is nonsingular and
+\[ (E_1	E_2		E_3 	 	\dots		 E_k	)^{-1} = E_k^{-1} \dots E_2^{-1} E_1^{-1}  \]
+	\begin{proof}
+ First recall from previous class notes, that if $A$ and $B$ are nonsingular, then $AB$ is nonsingular and $(AB)^{-1} = B^{-1}A^{-1}$.  This result can be extended (by induction) to any finite length product of nonsingular matrices.  Namely, $\left( \prod \limits_{i=1}^{k} A_i \right)^{-1} =  \prod \limits_{i=1}^{k} A_{k-i+1}^{-1}$.  Our result follows immediately since $E_i$ is nonsingular for each $i$ by setting $A_i=E_i$ in preceding statement. 
+	\end{proof}
+
+\end{theorem}
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\item \textbf{Equivalent conditions for non singularity (invertibility)}
+\begin{theorem}
+	Given an $n \times n$ matrix $A$, the following are equivalent:
+	\begin{enumerate}
+		\item $A$ is nonsingular
+		\item $A {\bf x} = {\bf 0}$ has only the trivial solution ${\bf x} = {\bf 0}$
+		\item $A$ is row equivalent to $I$
+	\end{enumerate}
+	
+	\begin{proof}
+		As typical for \textit{TFAE} statements, show $(a) \Rightarrow (b) \Rightarrow (c) \Rightarrow (a)$.  
+		
+		$(a) \Rightarrow (b)$:  Assume $A$ is nonsingular.  Clearly,    ${\bf x} = {\bf 0}$ is a solution to $A {\bf x} = {\bf 0}$.  Suppose ${\bf y}$ is also a solution.  Then, 
+		\[  A {\bf y} = {\bf 0}  \Rightarrow A^{-1} A {\bf y} = A^{-1} {\bf 0} = {\bf 0}  \Rightarrow {\bf y} = {\bf 0} \]
+		
+			
+		$(b) \Rightarrow (c)$:      Perform elementary row operations on $A$ until $A$ is in row echelon form.  Then, $A {\bf x} = {\bf 0}$ has same solution as $U {\bf x} = {\bf 0}$.  No diagonal elements of $U$ can be zero since then there would be a row of zeros, thus more unknowns than equations (i.e., free variable = infinite solutions).  This is a contradiction since there is only one solution. 	
+		
+		
+		$(c) \Rightarrow (a)$:   Since $A$ is row equivalent to $I$, there exists a sequence of elementary matrices $E_1, \dots, E_k$ such that $E_1 \dots E_k A = I$, in other words,  
+		\[ A^{-1} = E_k^{-1} \dots E_2^{-1} E_1^{-1}  \]
+		and so $A$ is nonsingular (because $A^{-1}$ exists).  
+		
+		
+	\end{proof}
+\end{theorem}
+
+
+\begin{corollary}
+	The system $A {\bf x} = {\bf b}$ of $n$ linear equations and $n$ unknowns has a unique solution if and only if $A$ is nonsingular.
+	
+	\begin{proof} This is an if and only if proof - show a implies b and b implies a.  Additionally, we will use the Theorem above, contradiction, and standard technique for showing uniqueness by assuming more than one exists.
+	
+	
+	 ($\Rightarrow$) Suppose $A {\bf x} = {\bf b}$ has a unique solution, $\hat{{\bf x}}$ and suppose $A$ is singular (for contradictory purposes).  Then $A {\bf x} = {\bf 0}$ has a nontrivial solution ${\bf y} \ne {\bf 0}$.  Therefore, 
+	 \[ A (\hat{{\bf x}} + {\bf y})   = A  \hat{{\bf x}}   + A {{\bf y}}   = {\bf b} +  {\bf 0} = {\bf b}   \hspace{0.5in}   \]
+	 Therefore $\hat{{\bf x}} + {\bf y}$  is another solution, \#\footnote{The hashtag (\#) indicates \textit{contradiction}}, solution would not be unique. Hence $A$ is not singular (i.e., nonsingular).
+	 
+	 
+	 
+	 ($\Leftarrow$)   Suppose $A$ is nonsingular, then ${\bf x} = A^{-1} {\bf b}$ is a solution of the system $A {\bf x} = {\bf b}$.  To show it is unique, suppose ${\bf y}$ is another solution.  Consider
+	 \begin{align*}
+	 	A ( {\bf y} - {\bf x}) 	&= A {\bf y} - A {\bf x}\\
+						&= {\bf b} - {\bf b}\\
+	 					&= {\bf 0}
+	 \end{align*}
+Now since $A$ is nonsingular, 	 $A ( {\bf y} - {\bf x})  =  {\bf 0}$ has only the trivial solution, therefore 
+\[  {\bf y} - {\bf x} = {\bf 0}  \Rightarrow {\bf y} = {\bf x} \]
+and so the solution is unique.
+	\end{proof}
+\end{corollary}
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+%\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\section*{$LU$ factorization}
+
+
+%
+\begin{definition}
+An $n \times n$ matrix $A$ is said to be \textbf{upper triangular} if $a_{ij} = 0$ for $i>j$.  
+\end{definition}
+\begin{example}
+\[ A = \begin{bmatrix}  3 &  2  & 1\\ 0 & 5  &  7 \\  0 &  0 &  4   \end{bmatrix}   \text{\;\; and \;\;} B = \begin{bmatrix}  1 &  5  & 1 &  9\\ 0 & 0  &  -3  &  6 \\  0 &  0 &  5 &  7 \\ 0  &  0   &   0   & 2  \end{bmatrix}  \]
+\end{example}
+
+
+%
+\begin{definition}
+ An $n \times n$ matrix $A$ is said to be \textbf{lower triangular} if $a_{ij} = 0$ for $i<j$.  
+\end{definition}
+\begin{example}
+\[ A = \begin{bmatrix}  3 &  0  & 0\\ 2 & 0  &  0 \\  1 &  2 &  4   \end{bmatrix}   \text{\;\; and \;\;} B = \begin{bmatrix}  1 &  0  & 0 &  0\\ 2 & 3  &  0  &  0 \\  9 &  4 &  5 &  0 \\ 3  &  1   &   2   & 2  \end{bmatrix}  \]
+\end{example}
+
+
+
+
+
+
+
+%
+\begin{definition}
+ An $n \times n$ matrix $A$ is said to be \textbf{diagonal} if $a_{ij} = 0$ for $i \ne j$.  
+\end{definition}
+
+\begin{example}
+\[ A = \begin{bmatrix}  3 &  0  & 0\\ 0 & 0  &  0 \\  0 &  0 &  4   \end{bmatrix}   \text{\;\; and \;\;} B = \begin{bmatrix}  1 &  0  & 0 &  0\\ 0 & 3  &  0  &  0 \\  0 &  0 &  5 &  0 \\ 0  &  0   &   0   & 2  \end{bmatrix}  \]
+\end{example}
+
+
+
+\textbf{Note}:  Zero's are allowed on the diagonal.  
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+
+
+
+
+
+%
+\begin{definition}
+ An $n \times n$ matrix $A$ is said to be \textbf{strict} (upper, lower, diagonal) if it is (upper, lower, diagonal) and $a_{ii} \ne 0$ for all $i$.
+ 
+ \textbf{Note}:  This excludes zero's on the diagonal.   
+\end{definition}
+
+
+
+\begin{example} The following matrices are strict upper, strict lower, and strict diagonal respectively.  
+
+
+\[ \begin{bmatrix}  3 &  4 & 1\\ 0 & 5  &  2 \\  0 &  0 &  1   \end{bmatrix}   \text{\;\; ,  \;\;}
+ \begin{bmatrix}  3 &  0  & 0\\ 2 & 3  &  0 \\  1 &  5 &  9   \end{bmatrix}    \text{\;\; ,  \;\;} 
+    \begin{bmatrix}  3 &  0  & 0\\ 0 & 1  &  0 \\  0 &  0 &  4   \end{bmatrix} 
+     \]
+\end{example}
+
+
+
+
+
+
+\begin{example} The identity matrix is a strict diagonal matrix.  
+ \[
+     \begin{bmatrix}  1 &  0  & 0\\ 0 & 1  &  0 \\  0 &  0 &  1   \end{bmatrix} 
+     \]
+\end{example}
+
+
+
+
+
+
+
+% definition
+\begin{definition}  An $n \times n$ matrix $A$ is  \textbf{unit lower triangular} if it is a strict lower triangular with $a_{ii} = 1$ for all $i$.  
+\end{definition}
+
+
+% ---------------------------------------------------- % 
+\rule[0.01in]{\textwidth}{0.0025in}
+
+\textbf{$LU$ factorization}:
+
+	If an $n \times n$ matrix $A$ can be reduced to strict upper triangular form using only Type III row operations (premultiplication by a finite sequence of Type III elementary matrices, $E_k \dots E_2 E_1$), then it is possible to factor (or \textit{decompose}) matrix $A$.  In particular, 
+	
+	\[  E_k \dots E_2 E_1 A = U  \]
+	then
+	 \[  A = (E_k \dots E_2 E_1 )^{-1} U  \] 
+	 Let $L = (E_k \dots E_2 E_1 )^{-1}$ and we have successfully factored $A$ as, 
+	 
+	 \[   A = LU \]
+	 where $L$ is a unit lower triangular matrix and $U$ is strict upper.  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+\section*{Summary}
+
+
+ In this section we 
+\begin{enumerate}
+	\item Introduced and defined elementary matrices
+	\item Enumerated three equivalent conditions for nonsingularity 
+	\item Defined and discussed triangular (upper \& lower) and diagonal matrices
+	\item Used the inverse of the product of a finite sequence of elementary matrices in part of the factorization of matrix $A$ 
+	
+	
+\end{enumerate}
+ 
+
+
+
+\subsubsection*{Next time...}
+Lab in Decary 336
+
+
+
+\subsubsection*{Problems included in homework set}
+\textsection2.3: \# 3, 8, 12, 18, 28, 29
+
+
+
+
+
+
+ 
+
+
+
+
+
+%\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+%\begin{theorem}[Cauchy-Schwarz Inequality]
+%If ${\bf x} $ and ${\bf y} $ are vectors (in an inner product space) then
+ %\[ |  {\bf x} \cdot {\bf y} | \le ||{\bf x}|| \,  ||{\bf y}|| \]
+ %\end{theorem}	 
+%\end{tcolorbox} 
+
+
+

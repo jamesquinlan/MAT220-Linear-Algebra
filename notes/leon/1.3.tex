@@ -1,0 +1,347 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\begin{enumerate}
+\item  \textbf{Matrix Notation} - Capital letters (e.g,. $A, B, C, X$) are used to indicate a matrix.  In general $a_{ij}$ is used to denote the $i$-th row and $j$-th column, (i.e.,  $(i,j)$-th entry).  Thus, if $A$ is an $m \times n$ matrix, then
+
+\[ 
+A =  \begin{bmatrix} 
+	a_{11} & a_{12} & a_{13}	& \cdots & a_{1n} \\
+ 	a_{21} & a_{22} & a_{13}	& \cdots & a_{2n} \\
+  	a_{31} & a_{32} & a_{33}	& \cdots & a_{3n} \\
+	\vdots 	&	&	& \cdots & \vdots \\
+    	a_{m1} & a_{m2} & a_{m3}	& \cdots & a_{mn} \\
+    \end{bmatrix}  = (a_{ij})
+ \]
+
+Similarly, $B = (b_{ij})$ and $C=(c_{ij})$.
+
+\begin{example}
+$ \begin{bmatrix}  1& 2& 3 & 4\\ 5 & 6 & 7  & 8\\ 9 & 10 & 11 & 12 \end{bmatrix}$
+\end{example}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+%\begin{example}
+
+%\end{example}
+
+
+\item \textbf{Vectors} - Matrices with only one row or one column.  In other words, a $1 \times n$ matrix  (a.k.a. \textbf{row vector})  or a $m \times 1$ matrix (a.k.a. \textbf{column vector}) .  We typically use lower case \textbf{bold} face font to indicate vectors (e.g., ${\bf a}, {\bf x}$) .  Note: Leon book uses an arrow over the letter to denote row vector.  For example, $\vec{{\bf a}} = (a_1, a_2, a_3, \dots, a_n)$.  
+
+
+
+
+\begin{example} Examples of a row and column vector below:
+\[
+\vec{{\bf a}} = \begin{bmatrix} 1 & 2 &  3 & 4 & 5 \end{bmatrix} \hspace{1in} {\bf b} = \begin{bmatrix} 1 \\  2 \\ 3 \\ 4 \\ 5 \end{bmatrix} 
+\]
+\end{example}
+
+\textbf{MATLAB code}
+\begin{verbatim}
+>> a = [1, 2, 3, 4, 5]
+>> b = [1, 2, 3, 4, 5]'  % or [1;2;3;4;5]
+\end{verbatim}
+
+%\begin{example}
+
+%\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\item A matrix can be represented by a column of row vectors or a row of column vectors:
+\[
+A = \begin{bmatrix} \vec{{\bf a_1}}\\ \vec{{\bf a_2}} \\ \vec{{\bf a_3}} \\ \vdots \\ \vec{{\bf a_m}} \end{bmatrix}     \hspace{0.5cm} \text{ or } \hspace{0.5cm}      A=({\bf a_1} \;\; \;{\bf a_2} \; \;\; {\bf a_3} \; \;\; \cdots \; \;\; {\bf a_n})
+\]
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item \textbf{Equality} - Two matrices $A$ and $B$ are equal if they are the same size and their corresponding entries are equal (i.e., $a_{ij} = b_{ij}$) for every $i, j$.  
+
+\textbf{MATLAB commands}
+\begin{verbatim}
+>> size(A)
+>> A==B
+\end{verbatim}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item \textbf{Scalar Multiplication} - If $A$ is a matrix and $\alpha \in \mathbb{F}$ (e.g., $\mathbb{F} = \mathbb{R}$), then $\alpha A$ is the $m \times n$ matrix whose $(i,j)$ entry is $\alpha a_{ij}$.
+
+\begin{example}
+Let \[ A = \begin{bmatrix} 2 & 1 & -3 \\ 3 & 5 &1\end{bmatrix} \] and $\alpha =2$, then \[  \alpha A = 2A= \begin{bmatrix} 4 & 2 & -6 \\ 6 & 10 & 2 \end{bmatrix} \] 
+
+
+\textbf{MATLAB commands}
+\begin{verbatim}
+>> A=[2 1 -3;3 5 1]
+>> 2*A
+\end{verbatim}
+
+
+
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item \textbf{Matrix addition} - If $A = (a_{ij})$ and $B = (b_{ij})$ are both $m \times n$ matrices, then the sum $A+B$ is a $m \times n$ matrix given by, 
+\[  A+B = (a_{ij} + b_{ij}) \] 
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item \textbf{Vector-vector product}.  The product of a $1 \times n$ row vector  $ \vec{{\bf a}} = (a_1, a_2, a_3, \dots, a_n)$ with a $n \times 1$ column vector ${\bf b} = \begin{bmatrix} b_1 \\ b_2 \\  \vdots \\ b_n \end{bmatrix}$ is:
+\[ \]
+\[   \vec{{\bf a}} {\bf b} = a_1 b_1 +  a_2 b_2 + \cdots + a_n b_n \]
+
+This is also known as an \textit{scalar product} or \textbf{dot product}.
+
+
+
+
+
+
+
+     
+
+
+
+% MATRIX MULTIPLICATION %
+\item \textbf{Matrix multiplication} - In order to multiply matrices, the inner dimensions must match.  The resulting matrix will have the outer dimensions.  That is, if $A = (a_{ij})$ is an $m \times n$ matrix and $B=(b_{ij})$ is an $n \times r$ matrix, then $AB = C = (c_{ij})$, where
+\begin{align*}
+	c_{ij} &= \vec{{\bf a_i}} {\bf b_j} \\
+		& = \sum_{k=1}^n  a_{ik} b_{kj}  \hspace{0.5cm}  \forall i \in \{1, 2, \dots m \} \text{  \; and \; } j \in \{1, 2, \dots, n \}
+\end{align*}
+
+The $(i,j)$ entry in the product is found by finding the dot product of row $i$ with column $j$.  
+
+
+
+
+\begin{example} First note that the dimension of the matrices in the product below are $2 \times 3$ and $3 \times 3$ respectively.  The inner dimension is $3$, the resulting matrix will have dimensions $2 \times 3$.
+\[  \begin{bmatrix}  a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23} \end{bmatrix}  \begin{bmatrix}  b_{11} & b_{12}  & b_{13}\\ b_{21} &  b_{22}  & b_{23} \\ b_{31}  &  b_{32}  &  b_{33} \end{bmatrix} \]
+\[ = 
+ \begin{bmatrix}
+a_{11} b_{11} + a_{12} b_{21} + a_{13} b_{31}  & a_{11} b_{12} + a_{12} b_{22} + a_{13} b_{32} & a_{11} b_{13} + a_{12} b_{23} + a_{13} b_{33}  \\
+a_{21} b_{11} + a_{22} b_{21} + a_{23} b_{31}   &  a_{21} b_{12} + a_{22} b_{22} + a_{23} b_{32}   &   a_{21} b_{13} + a_{22} b_{23} + a_{23} b_{33} 
+\end{bmatrix}
+\]
+\end{example}
+
+
+
+
+
+
+
+
+% Linear Combination
+\item \textbf{Linear Combination}\footnote{This is a KEY concept} - If ${\bf a_1}, {\bf a_2}, \dots, {\bf a_n}$ are vectors in $\mathbb{R}^m$ and $c_1, c_2, c_3, \dots, c_n \in \mathbb{R}$, then a sum of the form
+\[  c_1 {\bf a_1} + c_2 {\bf a_2} + \cdots + c_n {\bf a_n} \]
+is called a \textit{linear combination} of the vectors ${\bf a_1}, {\bf a_2}, \dots, {\bf a_n}$.
+
+
+
+
+
+
+
+
+\item The product $AB$ can be expressed as 
+\[  \begin{bmatrix} A {\bf b_1} & A {\bf b_2} & \cdots & A {\bf b_n} \end{bmatrix} \]
+where the columns in the product are the result that $A$ has on the corresponding column of ${\bf b}$.   Said even differently, the $j$-th column in the product is the linear combination of the columns of $A$ with the ${\bf b_j}$. 
+
+
+% matrix-vector multiplication is a linear combination of the columns of A
+\item If $A$ is a $m \times n$ matrix and ${\bf x}$ is a $n \times 1$ vector, then 
+\[ A {\bf x} = x_1 {\bf a_1} + x_2 {\bf a_2} + x_3 {\bf a_3} + \cdots + x_n {\bf a_n} \]
+
+
+
+
+
+
+
+\item This can be easily shown in $\mathbb{R}^2$ using GeoGebra.
+
+
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% TRANSPOSE 
+\item The \textbf{Transpose} of an $m \times n$ matrix $A$ is the $n \times m$ matrix $B$ defined by
+\[ b_{ij} = a_{ji} \]
+
+The rows of $A$ are the columns of $B$.  The transpose is denoted by $A^T$.
+Therefore
+ $$A = \begin{bmatrix} \vec{{\bf a_1}}\\ \vec{{\bf a_2}} \\ \vec{{\bf a_3}} \\ \vdots \\ \vec{{\bf a_m}} \end{bmatrix}     \hspace{0.5cm} \text{ then } \hspace{0.5cm}      A^T=({\bf a_1} \;\; \;{\bf a_2} \; \;\; {\bf a_3} \; \;\; \cdots \; \;\; {\bf a_n})$$
+
+\textbf{MATLAB command} - use single quote at end of matrix
+\begin{verbatim}
+>> A'
+\end{verbatim}
+
+\begin{example}
+If  \[ A = \begin{bmatrix} 1 & 2 &3 \\ 4 & 5 & 6 \end{bmatrix} \]
+then
+\[ A^T = \begin{bmatrix} 1 & 4  \\ 2 & 5 \\ 3 & 6 \end{bmatrix} \]
+ \end{example}
+ 
+ 
+ % Symmetric 
+ \item \textbf{Symmetric} - A square matrix ($n \times n$) is symmetric if $A^T = A$.
+ 
+ 
+ 
+ % Skew-Symmetric
+  \item \textbf{Skew-Symmetric} - $A$ is \textit{skew-symmetric} if $A^T = -A$.  
+  
+  \begin{theorem}
+  	If $A$ is skew symmetric, then the diagonal entries are all $0$.  
+	
+	\proof If skew symmetric then $A^T = -A$.  Therefore, $a_{ii} = -a_{ii} \Rightarrow 2 a_{ii} = 0 \Rightarrow a_{ii} = 0$.  
+  \end{theorem}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item \textbf{Information Retrieval} - Simple search.  Documents are rows of matrix and key words columns.  This creates a binary matrix ($0$ and $1$'s matrix).  A $1$ is present in row $i$ column $j$ if there word $i$ is in document $j$ (document $j$ contains the word $i$).  The (binary) search vector is a column vector containing $1$'s and $0$'s depending on which words are in the search.  If the are 6 words and 7 documents, then a simply matrix multiplication of $A^T {\bf x}$ provides the count of each word in each document.
+
+\textbf{Relative frequency search} - A better approach (i.e., better search results) is to use relative frequencies because some documents could use the keyword more than others, thus making that document more relevant.  For example, if the keyword is \textit{matrix} occurs 10 times and \textit{theory} 20 times, and the total number of keywords occur 100 times, then the relative frequencies are $0.1$ and $0.2$.  The product would be taken and the highest (cumulated) relative frequencies would provide best search result.  
+
+\textbf{Keyword spam}:  Search engines use a more advanced technique since it is easy to spam a keyword in a webpage document.  
+
+
+\textbf{Advance searches}:  Use the SVD to filter noise, providing both better results, faster.  For example, \textit{calculus} is used in mathematics and dentistry.  The SVD provides an approximate database   that eliminates keywords in unwanted contexts.
+
+Modern searches provide ``closest" approximation to search vector.  
+
+For more information on information retrieval and internet searches, see \cite{berry2005understanding}.
+
+\end{enumerate}

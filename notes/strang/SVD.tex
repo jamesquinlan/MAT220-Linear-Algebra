@@ -1,0 +1,685 @@
+
+ 
+\section*{Enumeration of definitions, theorems, and examples}
+% Linear algebra is packed with applications (hence the title of the course \textit{Applied Linear Algebra}).  The \textit{singular value decomposition} is both a theoretical and practical application in linear algebra.  In today's lab, we will use the SVD for image compression.  
+
+\rule[0.0001in]{\textwidth}{0.000025in}
+
+
+\subsection*{Key Topics}
+\begin{itemize}
+	\item Eigenvalues/Eigenvectors
+	\item Orthogonal vectors and matrices
+	\item Symmetric (sometimes positive definite) matrix
+	% \item Bits, bytes, and file (image) size
+	\item SVD
+	
+\end{itemize}
+% \rule[0.001in]{\textwidth}{0.00025in}
+% Include full-sentence response.	
+\rule[0.0001in]{\textwidth}{0.000025in}
+
+% \noindent We first list some basic definitions and facts.  Read carefully and fill in any blanks.  
+
+
+\begin{questions}
+	
+	% highlight = \hl{linearly dependent}
+	% vectors = ${\bf v}_1, {\bf v}_2, \dots, {\bf  v}_n$
+	
+\subsection*{Background}	
+	
+	
+	
+
+
+
+\question A {\textbf{unit vector}} has length one, that is $|| {\bf u} || = 1$.  
+
+ 
+
+\question   (Orthogonal vectors):  ${\bf u} \perp {\bf v}$ if and only if $\langle {\bf u}, {\bf v} \rangle =  {\bf u}^T {\bf v} = 0$
+
+ 
+\question  A set of vectors are orthonormal if they are orthogonal unit vectors.   
+
+
+\question A square matrix $Q$ is orthogonal if and only if $Q^T = Q^{-1}$.  
+
+
+
+
+	
+	
+	
+% ==============  1 =============== %
+ \question Recall that $\lambda$ is an \textbf{eigenvalue} of a matrix $A$ with associated \textbf{eigenvector} $\bf{x}$ if $A{\bf x} = \lambda {\bf x}$.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	
+	\question For all matrices $A$, we have that  $\langle A{\bf x}, {\bf y} \rangle = \langle {\bf x}, A^T{\bf y} \rangle$.
+	
+	\proof  \begin{align*} 
+	\langle A{\bf x}, {\bf y} \rangle &= (A{\bf x})^T {\bf y}\\
+	&= {\bf x}^T A^T {\bf y} \\
+	&= {\bf x}^T (A^T {\bf y}) \\
+	&= \langle {\bf x}^T,  A^T {\bf y} \rangle 
+	\end{align*}
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\question A square matrix $A$ is  \textbf{symmetric matrix} if $A^T = A$.
+
+
+
+
+
+
+\question  If $\lambda_1\ne \lambda_2 \ne  \dots \ne \lambda_k$ (i.e., are distinct eigenvalues) of an $n \times n$ matrix $A$ with corresponding eigenvectors ${\bf x}_1, {\bf x}_2, \dots, {\bf x}_k$, then are linearly independent.  
+
+\proof Suppose not.  Suppose  ${\bf x}_1, {\bf x}_2, \dots, {\bf x}_k$ are dependent.  Further suppose that a subset ${\bf x}_1, {\bf x}_2, \dots, {\bf x}_r$ with $r < k$ are a basis for $\Span\{ {\bf x}_1, {\bf x}_2, \dots, {\bf x}_k \}$ (after reordering if necessary).  Then, ${\bf x}_1, {\bf x}_2, \dots, {\bf x}_{r+1}$ are dependent and therefore there exists $c_i$'s not all zero such that, 
+\begin{equation}\label{eqn:distinct}  c_1 {\bf x}_1 +   c_2 {\bf x}_2 + \dots  + c_r {\bf x}_r + c_{r+1} {\bf x}_{r+1}  = {\bf 0} \end{equation}
+Multiplying by $A$, 
+
+\begin{align*} 
+ c_1A {\bf x}_1 +   c_2 A{\bf x}_2 + \dots  + c_r A{\bf x}_r + c_{r+1} A {\bf x}_{r+1}  &= {\bf 0} \\
+ c_1\lambda_1 {\bf x}_1 +   c_2 \lambda_2{\bf x}_2 + \dots  + c_r  \lambda_r {\bf x}_r + c_{r+1} \lambda_{r+1} {\bf x}_{r+1}  &= {\bf 0}
+ \end{align*}
+
+Subtracting $\lambda_{r+1}$ times Eqn. \ref{eqn:distinct} we get
+\[  c_1(\lambda_1-\lambda_{r+1}) {\bf x}_1 +   c_2 (\lambda_2 - \lambda_{r+1}){\bf x}_2 + \dots  + c_r  (\lambda_r - \lambda_{r+1}) {\bf x}_r  = {\bf 0}   \] 
+
+Since the eigenvalues are distinct, this says that ${\bf x}_1, {\bf x}_2, \dots, {\bf x}_r$  are dependent which is a contradiction.  Therefore, $r=k$.  
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+\question Corollary:  If $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.  If the eigenvalues are not distinct, then $A$ may or may not be diagonalizable depending on whether the eigenvectors are independent.  
+
+\begin{example} An example with non distinct eigenvalues that is still diagonalizable (i.e., independent eigenvectors).
+	\[ A = \begin{bmatrix}  3 & -1  & -2 \\ 2  &  0  &   -2 \\  2  &  -1  &  -1 \end{bmatrix}   \]
+\end{example}
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+\question  An $n \times n$ matrix $A$ is \textbf{diagonalizable} if there is a nonsingular matrix $X$ such that $X^{-1}AX = D$ where $D$ is a diagonal matrix.  We say that $X$ \textbf{diagonalizes} $A$.
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+\question An $n \times n$ matrix $A$ is \textbf{diagonalizable} if and only if $A$ has $n$ linearly independent eigenvectors.  
+
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+\question If $A^T = A$, then $\langle A{\bf x},{\bf y} \rangle = \langle {\bf x}, A{\bf y} \rangle$.
+
+\proof  (Algebraic version of a two column proof):
+\begin{align*} \langle A{\bf x},{\bf y} \rangle &= (A{\bf x})^T {\bf y} &  \text{def. of inner product}  \\
+										&= ({\bf x}^T A^T) {\bf y} &  (AB)^T = B^TA^T \\
+										&= {\bf x}^T (A^T {\bf y}) & \text{associative law}  \\
+										&= {\bf x}^T (A {\bf y})     &  \text{since }  \, A^T=A \\
+										&= \langle {\bf x}, A{\bf y}    \rangle &  \text{def. of inner product}
+	\end{align*}
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% symmetric matrices that have quite nice properties concerning eigenvalues and eigenvectors.
+
+% A has exactly n (not necessarily distinct) eigenvalues
+% There exists a set of n eigenvectors, one for each eigenvalue, that are mututally orthogonal (even if the eigenvalues are not distinct.)
+
+
+
+
+
+
+
+
+
+
+
+
+\question \hl{Eigenvalues of a real symmetric matrix} are real.  (If $S^T = S$, then $\lambda_i \in \mathbb{R}$ for all $i$.)
+
+\proof Let $S$ be symmetric and $S x = \lambda x$.  Suppose $\lambda = a+bi$.  Then another eigenvalue is $\bar{\lambda} = a-bi$.    The components of the eigenvector $x$ may also be complex.  Now, 
+
+\[ Sx=\lambda x   \Leftrightarrow S \bar{x}=\bar{\lambda x} = \bar{\lambda} \bar{x }.\]
+  Its transpose,   
+\begin{equation}\label{eqn:symmat} \bar{x}S^T=\bar{x} S = \bar{\lambda} \bar{x }.\end{equation}
+
+Take dot product of first equation with $\bar{x}$ and last equation with $x$, 
+\[ \bar{x} Sx=\lambda \bar{x} x \;\;\;\; \text{ and } \;\;\;\;   \bar{x}Sx =   \bar{\lambda}  \bar{x }x .\]
+
+But, $ \bar{x} x = |x_1|^2 + \cdots + |x_n|^2 >0$, therefore $\bar{\lambda} = \lambda$, which means that $a+bi = a-bi$, which implies $b=0$.  Consequently, $\lambda \in \mathbb{R}$.  Note the use of symmetry in Eqn. \ref{eqn:symmat}.
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+\question \hl{Eigenvectors of real symmetric matrices} are perpendicular.  
+
+\proof Suppose $S{\bf x} = \lambda_1 {\bf x}$ and $S {\bf y} = \lambda_2 {\bf y}$. Further suppose that $\lambda_1 \ne \lambda_2$.  Then, 
+
+\[  \lambda_1 {\bf x}^T{\bf y} = (S {\bf x})^T {\bf y}  = {\bf x}^T S^T {\bf y}  =  {\bf x}^T S{\bf y}  = {\bf x}^T \lambda_2 {\bf y}  =  \lambda_2 {\bf x}^T{\bf y}  \]
+
+Then,
+\[  ( \lambda_1  - \lambda_2 ) {\bf x}^T{\bf y} = 0. \]
+Because, $\lambda_1 \ne \lambda_2$, $ {\bf x}^T{\bf y} = 0$.  
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+
+\question  The set of eigenvalues of $A$ is equal to the set for $A^T$.  That is, if $A {\bf x} = \lambda {\bf x}$ and $A^T {\bf y} = \mu {\bf y}$, then $\lambda = \mu$.  
+
+\proof  First note that $det(A) = det(A^T)$ (prove using induction and expansion of cofactors.  The cofactors using first row of $A$ are the cofactors of the first column of $A^T$).  Eigenvalues are the roots to the characteristic polynomial.  Furthermore, 
+\[  | A - \lambda I | = | (A - \lambda I)^T | = | A^T - \lambda I | \]
+ This is to say, they have the same characteristic polynomial.
+
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\question If $A \in \mathbb{R}^{m \times n}$, then both $A^TA$ and $AA^T$ are symmetric.  
+
+\proof Need to show that $(A^TA)^T = A^TA$.  Start with the left hand side and use the fact (previously proven) that $(AB)^T = B^T A^T$.  Similarly for  $AA^T$.
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+% AtA has same eigenvalues as AAt
+\question $A^TA$ and $AA^T$ have same eigenvalues (different eigenvectors...most likely).
+
+\proof   Suppose $\lambda$ is an eigenvalue of $A^TA$ with associated eigenvector ${\bf }$.  Then, 
+
+\begin{align*}
+	(A^TA) {\bf x} &= \lambda {\bf  x}  & \\
+	\Longrightarrow \;\; AA^TA {\bf x} &= \lambda A {\bf x}   & \text{multiply both sides by } A\\
+	\Longrightarrow \;\;  AA^T(A {\bf x}) &= \lambda (A {\bf x}) &  A{\bf x}  \text{ is the eigenvector }
+	\end{align*}
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+% rank  == N(A) = N(A^TA)
+\question \label{naeqnata}The $rank(A) = rank(A^TA)$.  This is equivalent to saying $N(A) = N(A^TA)$.  
+
+\proof  Show that the $N(A) = N(A^TA)$.   Let ${\bf x}  \in N(A)$, then $A{\bf x} =0 \Rightarrow A^TA{\bf x}  = 0 \Rightarrow {\bf x} \in N(A^TA)$.  Conversely, if ${\bf x} \in N(A^TA)$, i.e., $A^TA {\bf x} = 0$ then ${\bf x}^T A^TA {\bf x} = 0$.  This implies that $\langle A{\bf x} , A{\bf x} \rangle = 0$, which only happens when $A {\bf x} = {\bf 0}$.    This shows that $ {\bf x} \in N(A)$.  %Show inclusion in the other direction, then use the rank $+$ nullity theorem.  
+ 
+ %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\question \label{poseigs} Eigenvalues of symmetric matrices must be nonnegative.  In particular, eigenvalues if $A^TA$ are nonnegative.  
+
+\proof   
+\[ || A{\bf x} ||^2 =  {\bf x}^TA^TA {\bf x} =  \lambda {\bf x}^T {\bf x} = \lambda ||{\bf x}||^2 \ge 0. \]
+
+Hence,  \[ \lambda \ge \frac{|| A{\bf x} ||^2 }{||{\bf x}||^2}. \]
+
+
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+
+% SVD 
+
+\question The SVD decomposes into smaller pieces (rank 1 matrices) of decreasing importance.
+
+
+
+\question Equations from the SVD: 
+ $AA^T {\bf u}_i = \sigma_i {\bf u}_i$, \; 
+$A^TA {\bf v}_i = \sigma_i {\bf v}_i$, \; 
+$A {\bf v}_i = \sigma_i {\bf u}_i$. 
+
+
+
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+% ==============  SVD =============== %
+
+\question \textbf{BIG Theorem}: Given $A \in \mathbb{R}^{m \times n}$, then $A$ has a singular value decomposition (\hl{you will not have to prove this on the exam}, but should know the components such as ${\bf u}_j = \frac{1}{\sigma_j} {\bf v}_j$).  
+
+\proof Proof is by construction (that is we construct the matrices $U, \Sigma$, and $V$ that  work).  
+
+First, $A^TA$ is a $n \times n$ symmetric matrix, therefore $\lambda_i \in \mathbb{R}$ and $\lambda_i \ge 0$ (see \#\ref{poseigs} above).  Additionally, there exists an orthogonal diagonalization matrix $V$ of $A^TA$.   WLOG, we assume the eigenvalues are ordered as, 
+\[ \lambda_1\ge  \lambda_2 \ge  \dots \ge  \lambda_n \ge 0. \]
+
+Let $\sigma_i = \sqrt{\lambda_i}$ (these are the singular values of $A$).    Since the rank of $A$ is equal to the rank of $A^TA$, the rank, $r$, equals the number of nonzero eigenvalues.  %prove this.
+ 
+\[ \lambda_1\ge  \lambda_2 \ge  \dots \ge  \lambda_r >  0 \;\; \text{ and } \;\;  \lambda_{r+1} = \dots = \lambda_n = 0  \]
+
+Therefore, 
+
+\[ \sigma_1\ge  \sigma_2 \ge  \dots \ge  \sigma_r >  0 \;\; \text{ and } \;\;  \sigma_{r+1} = \dots = \sigma_n = 0  \]
+
+Let $\Sigma_1$ be the $r \times r$ diagonal matrix with the first $r$ (positive) singular values.  Then
+\[  \Sigma = \begin{bmatrix} \Sigma_1 & O \\ O & O \end{bmatrix} \] 
+
+Let $V$ be the matrix containing the normalize eigenvectors of $A^TA$.   Note, that  
+\[ V =  \begin{bmatrix} V_1 &  V_2  \end{bmatrix}  \] where  
+\[ V_1 =  \begin{pmatrix} {\bf v}_1 &  {\bf v}_2 &  \dots  &  {\bf v}_r  \end{pmatrix}   \;\; \text{ and } \;\; V_2 =  \begin{pmatrix} {\bf v}_{r+1} &  {\bf v}_{r+2} &  \dots  &  {\bf v}_n  \end{pmatrix}  \]  
+Here $V_2$ are the eigenvectors associated with the eigenvalue $0$.  It is worth noting that $I = VV^T = V_1V_1^T+V_2 V_2^T$ for which then 
+\[ A = AI = AVV^T = AV_1V_1^T+A V_2 V_2^T  = AV_1V_1^T \]
+since $AV_2 = O$ (i.e., all vectors in $V_2$ are in the $N(A)$ because $N(A) = N(A^TA)$, see \#\ref{naeqnata} above).    
+
+
+
+Finally, we need to construct $U$ such that $AV = U \Sigma$.  If we define ${\bf u}_j$ as,  
+
+\[  {\bf u}_j = \frac{1}{\sigma_j} A {\bf v}_j    \;\;  \text{ for }\;  j \in \{1, 2, \dots, r \}, \]
+
+then it is clear to see that 
+
+
+\[   A {\bf v}_j =  {\sigma_j} {\bf u}_j   \;\; \;\; \;\;\;\;\;\;\;\; \; 1 \le j \le r.  \]
+Translated into matrices, 
+\[   A V_1 = \Sigma_1 U_1 .  \]
+ (You should be able to prove that the vectors of $U_1$ are orthonormal).  
+ 
+ 
+Next, since each of the vectors in $U_1$ are in the column space of $A$, we need to select our other $m-r$ vectors from $N(A^T)$ since these vectors are the only ones left that are orthogonal to the vectors in the column space (i.e., $C(A) \perp N(A^T)$, this is the \hl{Fundamental Theorem of Linear Algebra}).  After finding these, we make
+\[  U_2 =  \begin{pmatrix} {\bf u}_{r+1} &  {\bf u}_{r+2} & \dots & {\bf u}_{m}  \end{pmatrix}  \]
+Now, 
+
+\[ U =  \begin{bmatrix} U_1 &  U_2  \end{bmatrix}  \]
+
+ 
+ Finally putting it altogether, 
+ 
+\begin{align*}
+U \Sigma V^T   &=   \begin{bmatrix} U_1 &  U_2  \end{bmatrix}  \begin{bmatrix} \Sigma_1 & O \\ O & O \end{bmatrix} \begin{bmatrix} V_1^T \\  V_2^T  \end{bmatrix}\\
+&= U_1 \Sigma_1 V_1^T \\
+&= A V_1V_1^T\\
+&=A
+\end{align*}
+
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+% ==============  3 =============== %
+
+
+\question The SVD decomposes $A$ into two basis matrices, $A = U \Sigma V^T$  instead of one $A = X^{-1} \Lambda X$.  Typically gives more information.  
+
+
+\question $U \Sigma V^T = \sigma_1 {\bf u}_1 {\bf v}_1^T + \sigma_2 {\bf u}_2 {\bf v}_2^T + \cdots + \sigma_n {\bf u}_n {\bf v}_n^T$.
+
+
+
+
+
+
+
+
+
+
+
+
+% ==============  3 =============== %
+%\question 
+%	\begin{enumerate}
+%	% -------------------- 3. (a) ------------------- %	
+%	\item Suppose $V$ is a $6-$dimensional vector space.  Can the set of distinct vectors $\bf{v}_1, \bf{v}_2, \bf{v}_3, \bf{v}_4, \bf{v}_5, \bf{v}_6,  \bf{v}_7, \bf{v}_8$  from $V$ be linearly independent? Explain in full sentences.	
+	
+%	% -------------------- 3. (b) ------------------- %	
+%	\item  What is the dimension of $\spn\{(1, 0, 2)^T, (0, 1, 4)^T, (2, -2, -4)^T\}$?  What is the basis for their span?   Do the same question for the vectors from Exercise 1(a).
+ % \end{enumerate}
+
+
+
+
+
+     
+
+
+% \question Since $5 = 1 \cdot 2^2 + 0\cdot 2^1 + 1 \cdot 2^0$, the binary representation of the integer $5$ is $101_2$.    Each element/position in the representation uses a $0$ or a $1$, called a bit.   What are the binary representations of $28$ and $193$? 
+
+ 
+% \question How many bits does it take to represent $255$?
+ 
+% \question There are 8 bits in a byte.  How many bytes in a  kilobyte?  a megabyte (MB)?  
+
+ 
+% \question How many elements are there in a $400 \times 600$ matrix?
+
+ 
+% \question How many bytes of storage does it require? 
+% 400 x 600 = 240,000  
+% each element is a 8 bit representation or 1 byte.  
+% Step 1:  Multiply the detectors number of horizontal pixels by the number of vertical pixels to get the total number of pixels of the detector.
+
+% Step 2:  Multiply total number of pixels by the bit depth of the detector (16 bit, 14 bit etc.) to get the total number of bits of data.
+
+% Step 3:  Dividing the total number of bits by 8 equals the file size in bytes.
+
+% Step 4:  Divide the number of bytes by 1024 to get the file size in kilobytes.  Divide by 1024 again and get the file size in megabytes.
+
+% # Of Pixels X Bit Depth ÷ 8 ÷ 1024 ÷ 1024 = File Size in Megabytes (MB)
+ 
+\question Given matrices $A_{m \times n}$ and $B_{n \times m}$, how many elements are there in ${\bf a}^T$ and ${\bf b}$ where ${\bf a}$ and ${\bf b}$ are columns of $A$ and $B$ respectively?
+
+
+
+
+
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+\end{questions}
+ 
+ 
+ 
+ \section*{How to ...}
+ 
+ 
+ 
+ 
+ 
+ 
+ \subsubsection*{How to determine if a set of vectors are independent}
+ 
+
+ \begin{questions}
+\question Solve $A{\bf x} = {\bf 0}$ for ${\bf x}$.  
+\question If  $ {\bf x} = {\bf 0}$, then the vectors are independent.  
+
+NOTE: This is equivalent to finding the nullspace.
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+ 
+ 
+ \subsubsection*{How to find the nullspace}
+ 
+
+ \begin{questions}
+\question Solve $A{\bf x} = {\bf 0}$ 
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+ 
+ \subsubsection*{How to find eigenvalues}
+ 
+
+ \begin{questions}
+\question Solve $|A-\lambda I |= 0$ for $\lambda$  where the vertical bars denote the determinant. 
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+ 
+ \subsubsection*{How to find eigenvectors}
+ 
+
+ \begin{questions}
+\question Find the eigenvalues.  
+
+\question Find a basis for the nullspace of $A-\lambda I$, i.e., $N(A-\lambda I)$.  
+
+
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+ 
+ \subsubsection*{How to find the projection of ${\bf b}$ onto ${\bf a}$}
+ 
+
+ \begin{questions}
+\question Find the unit vector of ${\bf a}$,  $${\bf u} = \frac{{\bf a}}{|| {\bf a} ||}$$ 
+
+\question Find the scalar projection (length of projection), 
+\[ \alpha =  \frac{\langle {\bf a}, {\bf b} \rangle}{||{\bf a} ||} .\]  
+
+
+\question Multiply those two, 
+\[  {\bf p} = \alpha {\bf u} = \frac{\langle {\bf a}, {\bf b} \rangle }{\langle {\bf a}, {\bf a} \rangle} {\bf a}  \] 
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ \subsubsection*{How to Find the SVD}
+ 
+
+ \begin{questions}
+\question Find the eigenvalues and eigenvectors of $A^TA$.  Normalize the eigenvectors is necessary.  Place them in matrix $V$.  
+
+\question  Find singular value(s) matrix, $\Sigma$.  Note, $\sigma_k = \sqrt{\lambda_k}$.  Keep them ordered, that is, 
+ \[ \sigma_1 = \sqrt{\lambda_1}  \ge  \sigma_2 = \sqrt{\lambda_2}  \ge \cdots \]
+
+\question For each ${\bf v}_i$, set ${\bf u}_i = \frac{1}{\sigma_i} A {\bf v}_i$.  Place these in the matrix $U$.  
+
+\question Lastly, find orthogonal vectors associated with zero singular values by solving $N(A^T)$ (because this is perpendicular to $C(A)$ for which the ${\bf u}$ belong).   
+ 
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+
+ 
+ 
+ \subsubsection*{Some other how to's ... }
+ 
+
+ \begin{questions}
+ \question Find the determinant
+ \question Find $LU$ factorization
+ \question Find the dimension of a (sub)space
+\question Find the inner product
+\question Find an orthonormal basis (Gram-Schmitt)
+\question Find the transpose
+\question Find the matrix-matrix and matrix-vector product
+\question etc.
+\end{questions}
+ 
+ 
+ % ----------------------------------------------------------------------- %
+\rule[0.001in]{\textwidth}{0.00025in}
+
+
+
+ 
+  \subsection*{Summary}
+ 
+ You should notice that the topics covered in this course are not isolated independent topics but are highly interconnected.  Moreover, if you have not realized it yet, linear algebra plays a significant role in nearly all mathematical\footnote{Especially statistics.}   and scientific endeavors.   This course  is perhaps the most important course you will take.  A few instances of connections between the topics covered in this course are: 
+ 
+ \begin{itemize}
+ 
+  \item determining if an $n \times n$ (square) matrix has an inverse can be found in many different ways (i) is the determinant not equal to zero?; (ii) are the columns independent? (iii) is the rank $n$? (iv) does the null space contain only the zero vector? or (v) are all the eigenvectors nonzero?
+
+ 
+  \item finding the inverse requires performing elementary row operations;
+
+ \item finding the null space requires solving a system of equations (i.e.,performing elementary row operations);  the null space is a subspace of $\mathbb{R}^n$;
+ 
+ \item  spaces have basis and those basis need to be a linearly independent spanning set; 
+ 
+ \item to determine if a set of vectors is independent, you need to determine the nullspace; 
+ 
+ \item orthogonal basis are particular good because they break space into fundamental components that are not correlated and thus remove redundant information; 
+ 
+ \item matrices can represent a complex transformation of a (data) vector, however, that complex transformation can be decomposed into a product of simple transformation (e.g., rotations and scaling)
+ 
+ 
+ 
+ \item to find eigenvectors, a basis for the nullspace of $A-\lambda I$ is found;
+ 
+ 
+ \item etc.  
+ 
+ \end{itemize}
+ 
+ 
+
+
+
+
+ 
+ 
+  % §A2.4 Conclusion
+% \subsection*{Conclusion}
+    
+
+
+% \input{includes/bib}

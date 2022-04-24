@@ -1,0 +1,258 @@
+ 
+
+
+%\subsubsection*{Objectives}
+%\begin{itemize}
+%	\item Calculate length of a vector
+%	\item Calculate dot products
+%	\item Use dot product to determine  
+%\end{itemize}
+
+
+
+\subsubsection*{Learning outcomes}
+Be able to:
+\begin{itemize}
+	% \item Identify a $m \times n$ matrix
+	\item Identify orthogonal subspaces
+	\item Identify orthogonal complements
+	\item Decompose vectors into sum of vectors from two complementary subspaces
+	
+\end{itemize}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+%
+%%
+%%%						  
+%%%% SECTION:  Matrices
+%%%
+%%
+%
+\section{Background}
+
+% DEFINITION: Matrix Notation
+ \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+ \begin{definition}[Orthogonal]
+ Two vectors ${\bf u}$ and ${\bf v}$ are \textbf{orthogonal} if ${\bf u}^T {\bf v} = {\bf 0}$
+ \end{definition}	 
+ \end{tcolorbox} 
+
+
+
+
+
+
+
+% DEFINITION:  
+ \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+ \begin{definition}[Orthogonal Subspaces]
+ Two subspaces $X$ and $Y$ of $\mathbb{R}^n$ are said to be \textbf{orthogonal} if ${\bf x}^T {\bf y} = { 0}$  for every ${\bf x} \in X$ and ${\bf y} \in Y$.   We write $X \perp Y$.
+ \end{definition}	 
+ \end{tcolorbox} 
+
+
+
+
+
+% EXAMPLE
+\begin{example}
+Are the floor and wall subspaces of $\mathbb{R}^3$.  In $\mathbb{R}^3$ are the floor and wall orthogonal subspaces?  Let $(1,1,0) \in xy$-plane and $(0,1,1) \in yz$-plane.  
+
+\[  1 \cdot 0 + 1 \cdot 1 + 0 \cdot 1 = 1 \ne 0 \]
+
+These subspaces are not orthogonal.
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\subsection*{Orthogonal Complements}
+
+
+% DEFINITION:  
+ \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+ \begin{definition}[Orthogonal Complements]
+ Let $X$ be a subspace of $\mathbb{R}^n$.  The set of all vectors in $\mathbb{R}^n$ that are orthogonal to every vector in $X$, denoted, $X^\perp$, (pronounced ``X perp") is called the \textbf{orthogonal complement} of $X$.  
+ 
+\[  X^\perp = \{ {\bf y} \in \mathbb{R}^n : {\bf x}^T {\bf y} = 0 \;\;\;  \forall {\bf x} \in X \} \]
+
+ \end{definition}	 
+ \end{tcolorbox} 
+
+
+
+
+% theorem
+\begin{theorem}
+The row space $C(A^T)$ and null space $N(A)$ are orthogonal complements of each other.  That is, 
+\[  C(A^T) \perp N(A) \]
+\proof Let ${\bf v} \in C(A^T)$ and $x \in N(A)$.  Then ${\bf v}$ is a linear combination of the rows of $A_{m \times n}$, that is ${\bf v} = A^T {\bf y}$ for some coefficient vector ${\bf y}$.  Consider, 
+\[  {\bf v}^T {\bf x} = (A^T {\bf y})^T {\bf x} = {\bf y}^TA {\bf x} = {\bf y}^T {\bf 0} = {0} \]
+
+\end{theorem}
+
+
+% ---------------------------------------------------- % 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+Orthogonal complements can be used to decompose vectors.   In particular, for every ${\bf x} \in \mathbb{R}^n$, 
+\[  {\bf x} = {\bf x}_r + {\bf x}_n \]
+
+
+
+\begin{example}
+Let $A = \begin{bmatrix} 1 & -1 \\ 0 & 0\\ 0 & 0 \end{bmatrix}$ and ${\bf x} = \begin{bmatrix}  2 \\ 0 \end{bmatrix}$.  Decompose ${\bf x}$, 
+
+\[  {\bf x}  = {\bf x}_r + {\bf x}_n  \]
+
+First, find $N(A) = \Span\{(1,1)^T\}$. 
+
+Next, we see the row space $C(A^T)$ is span by the first row $(1, -1)^T$.  Lastly, we solve the system of equations:
+
+\[  \begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix} {\bf c} = \begin{bmatrix}  2 \\ 0 \end{bmatrix} \]
+
+
+\end{example}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+\begin{example}
+Let $A = \begin{bmatrix} 1 & 2 \\ 3 & 6 \end{bmatrix}$ and ${\bf x} = \begin{bmatrix}  4 \\ 3 \end{bmatrix}$.  Decompose ${\bf x}$, 
+
+\[  {\bf x}  = {\bf x}_r + {\bf x}_n  \]
+
+First, find $N(A) = \Span\{(-2,1)^T\}$. 
+
+Next, we see the row space $C(A^T)$ is span by the first row $(1, 2)^T$.  Lastly, we solve the system of equations:
+
+\[  \begin{bmatrix} 1 & -2 \\ 2 & 1 \end{bmatrix} {\bf c} = \begin{bmatrix}  4 \\ 3 \end{bmatrix} \]
+
+
+\end{example}
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+\begin{theorem}
+	Given $A {\bf x}_r = {\bf b} = A{\bf x}_{r^'}$, then ${\bf x}_r = {\bf x}_{r'}$.  
+	
+	\proof If   $A {\bf x}_r = A{\bf x}_{r^'}$, then $  {\bf x}_r  - {\bf x}_{r^'}$ is in the nullspace.  But it is also in the rowspace since combination of two vectors from the rowspace are also in the row space. 
+	
+	 However,  since $C(A^T) \perp N(A)$,  $  {\bf x}_r  - {\bf x}_{r^'} = {\bf 0}$.  Thus implying,  $  {\bf x}_r  = {\bf x}_{r^'}$.
+\end{theorem}
+
+
+
+
+ 
+
+  
+ 
+ 
+ \begin{definition}
+ 	If $X$ and $Y$ are subspaces of a vector space $V$ and each ${\bf v} \in V$ can be written uniquely as a sum ${\bf x} + {\bf y}$, where ${\bf x} \in X$ and ${\bf y} \in Y$, then we say that $V$ is a \textbf{direct sum} of $X$ and $Y$ and write 
+	\[ V =  X \oplus Y \]
+ \end{definition} 
+ 
+   
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+% \begin{theorem}
+% 	If $S$ is a subspace of $\mathbb{R}^n$, then 
+%	\[  \mathbb{R}^n = S \oplus S^\perp \]
+	
+%	\proof 
+% \end{theorem} 
+ 
+   
+ 
+  
+
+
+
+
+
+\subsubsection*{Next time...}
+Section 4.2: Projections
+
+
+
+
+
+\subsubsection*{Homework}
+\textsection4.1: \#6, 7, 9, 21, 24
+
+
+
+
+
+ 
+%\[ 
+% A =  \begin{bmatrix} 
+%	a_{11} & a_{12} & a_{13}	& \cdots & a_{1n} \\
+% 	a_{21} & a_{22} & a_{13}	& \cdots & a_{2n} \\
+ % 	a_{31} & a_{32} & a_{33}	& \cdots & a_{3n} \\
+%	\vdots 	&	&	& \cdots & \vdots \\
+ %   	a_{m1} & a_{m2} & a_{m3}	& \cdots & a_{mn} \\
+ %   \end{bmatrix}  = (a_{ij})
+ %  \]
+
+
+
+
+%\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+%\begin{theorem}[Cauchy-Schwarz Inequality]
+%If ${\bf x} $ and ${\bf y} $ are vectors (in an inner product space) then
+ %\[ |  {\bf x} \cdot {\bf y} | \le ||{\bf x}|| \,  ||{\bf y}|| \]
+ %\end{theorem}	 
+%\end{tcolorbox} 
+
+
+

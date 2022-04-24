@@ -1,0 +1,130 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+
+\subsubsection*{Objectives}
+\begin{itemize}
+	\item Define vector (column and row vectors)
+	\item Define linear combination
+	\item Show that any linear transformation between finite-dimensional spaces can be represented by a matrix
+	\item State matrix representation theorem
+    
+\end{itemize}
+
+
+
+\subsubsection*{Learning outcomes}
+\begin{itemize}
+	\item Define vector (column and row vectors)
+	\item Define linear combination
+	\item Show that any linear transformation between finite-dimensional spaces can be represented by a matrix
+	\item State matrix representation theorem
+    
+\end{itemize}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Every matrix defines a linear transformation}
+From section 4.1 page 174 shows that if $A$ is a matrix,  a linear transformation $L: \mathbb{R}^n \to \mathbb{R}^m$ can be defined as $L({\bf x}) = A {\bf x}$. 
+
+
+% \textbf{every matrix represents some linear transformation}.
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Every linear transformation is a matrix}
+\begin{theorem}
+	If $L$ is a linear transformation mapping  $\mathbb{R}^n \to \mathbb{R}^m$, then there exists an $m \times n$ matrix $A$ such that $$L({\bf x}) = A{\bf x}$$
+	for each ${\bf x} \in \mathbb{R}^n$.  
+	
+	\begin{proof}
+		For $j = 1, \dots, n$, define
+		\[  {\bf a}_j = L({\bf e}_j)  \]
+		
+		and let $A = ({\bf a}_1 \;  \;  {\bf a}_2 \; \; \cdots {\bf a}_n )$.  If
+		\[ {\bf x} = x_1 {\bf e}_1 + x_2 {\bf e}_2 + \cdots + x_n {\bf e}_n  \]
+		is an arbitrary element of $\mathbb{R}^n$, then 
+		\begin{align*}
+			L({\bf x}) &= x_1 L({\bf e}_1) + x_2 L({\bf e}_2) + \cdots + x_n L({\bf e}_n)\\
+			&= x_1 {\bf a}_1 + x_2 {\bf a}_2 + \cdots + x_n {\bf a}_n\\
+			&=\begin{pmatrix} {\bf a}_1 &   {\bf a}_2 &  \cdots &  {\bf a}_n \end{pmatrix} \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}  \\
+			& = A {\bf x}
+		\end{align*}
+		This establishes that each linear transformation from $\mathbb{R}^n$ into $\mathbb{R}^m$ can be represented in terms of a $m \times n$ matrix.  Moreover, it provides a construction of the matrix $A$.  To get the first column, see what effect $L$ has on the first basis vector ${\bf e}_1$;  the second column of $A$ is obtained by $L({\bf e}_2)$, and so on.  This representation is called the \textbf{standard matrix representation of $L$}.
+	\end{proof}
+\end{theorem}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\begin{theorem}
+	Let $E = \{ {\bf u}_1, \dots, {\bf u}_n \}$ and $F = \{ {\bf v}_1, \dots, {\bf v}_m \}$ be ordered bases for $\mathbb{R}^n$ and $\mathbb{R}^m$, respectively.  If $L: \mathbb{R}^n \to \mathbb{R}^m$ is a linear transformation and $A$ is the matrix representing $L$ with respect to $E$ and $F$, then 
+	\[  {\bf a}_j =  B^{-1} L({\bf u}_j) \;\;\;\;\; \text{ for } j = 1, 2, \dots, n \]
+	
+where $B = ({\bf v}_1, {\bf v}_2, \dots, {\bf v}_m)$.
+	
+	\begin{proof}
+		Let $A$ represent $L$, then for $j = 1, 2, \dots, n$
+		\begin{align*}
+			 L({\bf }_j) &= a_{1j} {\bf v}_1 + a_{2j} {\bf v}_2 + \cdots + a_{mj} {\bf v}_m\\
+			 		&= B {\bf a}_j 		
+		\end{align*}
+		
+		$B$ is nonsingular because its columns are a basis of $\mathbb{R}^m$, then 
+	\[  {\bf a}_j = B^{-1} L({\bf u}_j) \]
+
+
+
+	\end{proof}
+		
+\end{theorem}
+
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+\section*{Next time...}
+Section 4.3: Similarity
+

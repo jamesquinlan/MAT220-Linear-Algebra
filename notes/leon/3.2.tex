@@ -1,0 +1,323 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+Often a subset of vectors from a vector space form a vector spaces itself.  If so, it is called a \textbf{subspace}.
+
+
+ 
+ 
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+
+ 
+%\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+\section*{Subspace}
+\begin{definition}
+
+
+If $S$ is a nonempty subset of a vector space $V$, and $S$ satisfies the conditions: \\
+
+
+
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\begin{enumerate}
+	\item[(i)] $\alpha {\bf} \in S$ whenever ${\bf x} \in S$ for any scalar $\alpha$
+	\item[(ii)] ${\bf x} + {\bf y} \in S$ whenever ${\bf x} \in S$ and ${\bf y} \in S$.
+\end{enumerate}
+	 
+	\end{tcolorbox}
+	
+\end{definition}
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+
+\textbf{To show a subset $S$ is a subspace}:
+\begin{enumerate}
+	\item Show it is nonempty.  The easiest way is to show that ${\bf 0} \in S$.
+	\item Show it is closed under addition (i.e., ${\bf x} + {\bf y} \in S$)
+	\item Show it is closed under scalar multiplication, (i.e., $\alpha {\bf x} \in S$ for all $\alpha \in F$ and for all ${\bf x} \in S$.)
+\end{enumerate}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\begin{example}
+$S = \{ (x_1, x_2, x_3)  \in  \mathbb{R}^3 \; : \; x_1=x_2 \}$.
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\begin{example}
+$S = \{ A \in M_2(\mathbb{R}) \; : \; a_{12} = -a_{21} \}$.
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+% ---------------------------------------------------- % 
+\begin{example}
+$S = \{ p(x) \in P_n \; : \; p(0) = 0 \}$.
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+% ---------------------------------------------------- % 
+\begin{example}
+$C^n[a,b] \subset C[a,b]$ (the set of all  functions that have continuous $n$th derivative.
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\begin{example}
+Let $S$  be the set of all $f \in C^2[a,b]$ such that 
+\[  f''(x) +f(x) = 0 \]
+
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+
+
+  
+  
+  
+  
+  
+  
+  \section*{Null Space}
+  
+  
+  \begin{definition}
+Let $A$ be an $m \times n$ matrix.  The set of solutions to the homogenous system is a subspace called the \textbf{null space}.
+
+
+
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\[  N(A) = \{ {\bf x} \in \mathbb{R}^n \; | \;  A{\bf x} = {\bf 0}  \} \]
+	 
+	\end{tcolorbox}
+	
+\end{definition}
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+
+\textbf{To find the null space}:
+
+Solve the system $A{\bf x} = {\bf 0} $ for ${\bf x}$.
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+% ---------------------------------------------------- % 
+\begin{example}
+Find the null space of 
+\[  
+A = \begin{bmatrix}
+1 & 1 & 1 & 0\\ 2 & 1 & 0 & 1
+\end{bmatrix}
+ \]
+
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%% 
+
+\section{The Span}
+
+  \begin{definition}
+Let ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n  \in V$.  The sum of the form $\alpha_1 {\bf v}_1 +  \alpha_2 {\bf v}_2 +  \cdots + \alpha_n {\bf v}_n$ is called a \textbf{linear combination}.  The set of all linear combinations of ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n$ is called the \textbf{span} of ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n$.
+
+
+
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\[ \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n) = \left\{ \sum_{i=1}^n (\alpha)_i {\bf v}_i \; | \; \forall  \alpha \in F    \right\}  \]
+	 
+	\end{tcolorbox}
+	
+\end{definition}
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+
+
+
+
+
+
+
+\begin{theorem}
+	if ${\bf v}_1, {\bf v}_2, \dots, {\bf v}_n  \in V$, then $ \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$ is a subspace of $V$.
+	
+	\begin{proof}
+		\begin{enumerate}
+			\item[(i)] Clearly it is nonempty
+			 
+			
+			%${\bf 0} \in \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$ since 
+			% \[ 0 {\bf v}_1 +  0 {\bf v}_2 +  \cdots + 0 {\bf v}_n = {\bf 0}  \]
+			
+			\item[(ii)]  Let $\beta$ be a scalar and ${\bf v} = \alpha_1 {\bf v}_1 +  \alpha_2 {\bf v}_2 +  \cdots + \alpha_n {\bf v}_n$ in the span.    Then, 
+			\[ \beta {\bf v} = (\beta \alpha_1) {\bf v}_1 + (\beta  \alpha_2) {\bf v}_2 +  \cdots + (\beta  \alpha_n) {\bf v}_n	\]
+	which is also a linear combination of the ${\bf v}_i$'s and so in the Span.
+	
+	\item[(iii)]  Let ${\bf v}$ and ${\bf w}$ be elements in the Span.  Therefore,  $ {\bf v} = \alpha_1 {\bf v}_1 +  \alpha_2 {\bf v}_2 +  \cdots + \alpha_n {\bf v}_n$ and $ {\bf w} = \beta_1 {\bf v}_1 +  \beta_2 {\bf v}_2 +  \cdots + \beta_n {\bf v}_n$.  Consider, ${\bf v}+{\bf w}$, 
+	\begin{align*}
+		{\bf v}+{\bf w} &=  (\alpha_1 {\bf v}_1 +  \alpha_2 {\bf v}_2 +  \cdots + \alpha_n {\bf v}_n) +  ( \beta_1 {\bf v}_1 +  \beta_2 {\bf v}_2 +  \cdots + \beta_n {\bf v}_n\\
+		&=  (\alpha_1+\beta_1) {\bf v}_1  +  \cdots + (\alpha_n + \beta_n) {\bf v}_n\\
+		& \in  \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)
+	\end{align*}
+	
+	\end{enumerate}
+	\end{proof}
+\end{theorem}
+ 
+ \rule[0.01in]{\textwidth}{0.0025in}
+
+ 
+
+
+
+
+
+
+%%%%%%
+\section*{Spanning set for Vector Space}
+If $\text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n) = V$, then ${\bf v}_1, \dots, {\bf v}_n$ is a \textbf{spanning set} for $V$.
+
+\textbf{To determine if a set is a spanning set}
+\begin{enumerate}
+	\item Set up system of equation with the possible spanning vectors as columns of a matrix and an arbitrary vector $ {\bf b}$ from the space as the right hand side.  
+	\[ A {\bf x} = {\bf b} \]
+	\item Solve the system.  If consistent, then the set is a spanning set.
+\end{enumerate}
+
+ \rule[0.01in]{\textwidth}{0.0025in}
+
+
+
+
+ \begin{example}
+ Which of the following are spanning sets for $\mathbb{R}^3$?
+ \begin{enumerate}
+ 	\item $\{ (1, 1, 1)^T, (1, 1, 0)^T, (1, 0, 0)^T \}$
+	\item $\{ (1, 0, 1)^T, (0, 1, 0)^T \}$
+	\item $\{(1, 2, 3)^T, (2, 1, 3)^T, (4, -1, 1)^T \}$
+ \end{enumerate}
+ \end{example}
+
+ \rule[0.01in]{\textwidth}{0.0025in}
+
+
+\begin{example}
+	Do the vectors $1 - x^2, x+2$, and $x^2$ span $P_3$?
+\end{example}
+
+ \rule[0.01in]{\textwidth}{0.0025in}
+
+
+
+
+
+\begin{theorem}
+	If ${\bf x}_0$ is a solution of  $A {\bf x} = {\bf b}$, then ${\bf y}$ is a solution if and only if ${\bf y} = {\bf x}_0 + {\bf z}$ where ${\bf z} \in N(A)$.
+	
+	\begin{proof}
+	($ \Leftarrow$) Suppose ${\bf y} = {\bf x}_0 + {\bf z}$ where ${\bf z} \in N(A)$.  Consider, 
+	$ A {\bf y} = A {\bf x}_0 + A {\bf z} = A {\bf x}_0 + {\bf 0} = {\bf b}$.  Therefore, ${\bf y}$ is a solution.
+	
+	($ \Rightarrow$) Next, suppose $ A {\bf y} =  {\bf b}$, then we have that $A {\bf y}  - A {\bf x}_0 = {\bf b} -  {\bf b}  = {\bf 0}$.  Therefore, ${\bf y}  - {\bf x}_0 \in N(A)$.  Define ${\bf z } = {\bf y} - {\bf x}_0$, and solve for ${\bf y}$.        
+	\end{proof}
+\end{theorem}
+
+
+
+
+\section*{Next time...}
+Section 3.3: Linear Independence
+

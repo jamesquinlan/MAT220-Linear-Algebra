@@ -1,0 +1,409 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+Spanning sets and Linear Independence/Dependence are not mutually exclusive.  Linear Independence is a property of a multiset of vectors and reveals structure about the vector space for which they belong.
+
+Every vector in a Vector Space can be built up (or generated) by a linear combination of vectors in a spanning set.  It is desirable to find the minimal spanning set (next section).
+
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Define Linear Independent / Dependent
+	\item Give conditions to determine linear independence
+	\item Give geometric interpretation of linear independence
+	\item Define the Wronskian
+    
+\end{enumerate}
+
+
+
+ 
+ 
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+\begin{theorem}
+	If  $V = \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$ and one of these vector can be written as a linear combination of the other $n-1$ vectors, then those $n-1$ vectors span $V$.
+	
+	\begin{proof}
+		Suppose $V = \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$ and one of these vector can be written as a linear combination of the other $n-1$ vectors.  That is, WLOG, suppose
+		\[ {\bf v}_n = c_1 {\bf v}_1 + \cdots + c_{n-1}{\bf v}_{n-1} \]
+		Let ${\bf v} \in V$, then ${\bf v}$ can be written as a linear combination of the ${\bf v}_i$:
+		\[ {\bf v} = b_1 {\bf v}_1 + \cdots + b_n {\bf v}_n \]
+		Therefore we have 
+		\begin{align*}
+			 {\bf v} &= b_1 {\bf v}_1 + \cdots + b_n {\bf v}_n\\
+			 	&= b_1 {\bf v}_1 + \cdots + b_n ( c_1 {\bf v}_1 + \cdots + c_{n-1}{\bf v}_{n-1})\\
+				&= (b_1+c_1){\bf v}_1 + \cdots +  (b_{n-1}+c_{n-1}){\bf v}_{n-1} 
+		\end{align*}
+		Therefore, ${\bf v}$ can be written as a linear combination of $n-1$ vectors, where ${\bf v}$ is any vector in $V$.
+	\end{proof}
+\end{theorem}
+ 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}
+Given $n$ vectors ${\bf v}_1, \dots, {\bf v}_n$, it is possible to write one of the vectors as a linear combination of the other $n-1$ vectors if and only if there exist scalars $c_1, \dots, c_n$ not all zero, such that 
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+
+
+\begin{proof}
+	Suppose, 
+\[ {\bf v}_n = a_1 {\bf v}_1 + \cdots + a_{n-1}{\bf v}_{n-1} \]
+Subtracting ${\bf v}_n$ from both sides we have
+\[  {\bf 0} = a_1 {\bf v}_1 + \cdots + a_{n-1}{\bf v}_{n-1} -  {\bf v}_n \] 
+Set $c_i = a_i$ for $i=1, \dots, n-1$ and set $c_n = -1$, then it follows that 
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+
+Conversely, if 
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+and at least one of the $c_i$'s, say $c_n \ne 0$, then
+\[  {\bf v}_n =  \frac{-c_1}{c_n} {\bf v}_1 +  \frac{-c_2}{c_n}  {\bf v}_2 + \cdots   \frac{-c_{n-1}}{c_n} {\bf v}_{n-1}  \]
+
+
+\end{proof}
+\end{theorem}
+	%  \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+
+
+	 
+	%\end{tcolorbox}
+	
+ 	
+ \rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+% DEFINITION 
+\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+	\begin{definition}
+		The vectors ${\bf v}_1, {\bf v}_2,  \dots, {\bf v}_n \in V$ are \textbf{linearly independent} if 
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+
+then $c_i = 0 \; \forall i$.
+
+
+	\end{definition}
+	 
+\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+The vectors $\begin{bmatrix} 1 \\1\end{bmatrix}$ and  $\begin{bmatrix} 1 \\2 \end{bmatrix}$ are linearly independent since if 
+
+\[  c_1  \begin{bmatrix} 1 \\1\end{bmatrix} + c_2  \begin{bmatrix} 1 \\2\end{bmatrix} =  \begin{bmatrix} 0 \\0 \end{bmatrix} \]
+then the only solution to this equation is $c_1 = 0 = c_2$.  
+
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+% DEFINITION 
+\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+	\begin{definition}
+		The vectors ${\bf v}_1, {\bf v}_2,  \dots, {\bf v}_n \in V$ are \textbf{linearly dependent} if $\exists c_1, c_2, \dots, c_n$ not all zero such that 
+		
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+
+	\end{definition}
+	 
+\end{tcolorbox}
+
+ 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+The vectors $(1,2,3)^T, (1, 0, 0)^T, (0, 1, 0)^T, (0, 0, 1)^T$ are linearly dependent since  
+
+\[  (1, 0, 0)^T + 2 (0, 1, 0)^T + 3(0, 0, 1) - (1, 2, 3) = (0,0,0)  \]
+
+where $c_1 = 1, c_2 = 2, c_3 = 3, c_4 = -1$.  
+
+
+ \end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+ 
+ 
+ 
+ 
+ \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+ \textbf{Summary}:  If there are nontrivial choices of scalars ($c_i \ne 0, \exists i$) for which the linear combination $c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n$ equals ${\bf 0}$, then ${\bf v}_1, {\bf v}_2, \dots, {\bf v}$ are (linearly) \textbf{dependent}.   
+ 
+ If the \textit{only} way the linear combination $c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n$ can equal the zero vector is for all the scalars $c_1 =  c_2 =  \dots = c_n = 0$, then   ${\bf v}_1, {\bf v}_2, \dots, {\bf v}$ are (linearly) \textbf{independent}.  
+ 
+ \end{tcolorbox}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ %\newpage
+
+ 
+
+\begin{figure}[h!]
+  \begin{subfigure}[b]{0.4\textwidth}
+   \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[->,color=black] (-2.7,0) -- (2.98,0);
+\foreach \x in {-2,-1,1,2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0,-2.38) -- (0,2.96);
+\foreach \y in {-2,-1,1,2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-2.7,-2.38) rectangle (2.98,2.96);
+\draw [->] (0,0) -- (1.52,1.72);
+\draw [->] (0,0) -- (2.58,1);
+\end{tikzpicture}
+    \caption{Linearly Independent}
+
+    \label{fig:f1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.4\textwidth}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[->,color=black] (-2.7,0) -- (2.98,0);
+\foreach \x in {-2,-1,1,2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0,-2.38) -- (0,2.96);
+\foreach \y in {-2,-1,1,2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-2.7,-2.38) rectangle (2.98,2.96);
+\draw [->] (0,0) -- (1.52,1.72);
+\draw [->] (0,0) -- (2.06,2.34);
+\end{tikzpicture}
+    \caption{Linearly Dependent}
+    \label{fig:f2}
+  \end{subfigure}
+  \caption{Geometric Interpretation}
+\end{figure}
+
+
+%\newpage
+
+%\section*{Summary}
+
+
+ %In this section we 
+%\begin{enumerate}
+%	\item Introduced and defined elementary matrices
+%	\item Enumerated three equivalent conditions for nonsingularity 
+%	\item Defined and discussed triangular (upper \& lower) and diagonal matrices
+%	\item Used the inverse of the product of a finite sequence of elementary matrices in part of the factorization of %matrix $A$ 
+	
+	
+% \end{enumerate}
+ 
+
+
+
+
+\begin{example}
+	The following vectors are linearly independent $(1, 1, 1)^T, (1, 1, 0)^T, (1, 0, 0)^T$.  Solve the homogenous system of equations represented by 
+	\[  \begin{bmatrix}  1	& 1	& 1\\ 1 & 1  &  0\\ 1  &  0  &  0   \end{bmatrix} \begin{bmatrix} c_1 \\ c_2  \\ c_3   \end{bmatrix}  = \begin{bmatrix}  0 \\ 0 \\  0  \end{bmatrix} \]
+	
+\end{example}
+
+
+
+
+
+
+
+\begin{example}
+	Are the following vectors are linearly independent?   $(1, 2, 4)^T, (2, 1, 3)^T, (4, -1, 1)^T$.  The following system is singular and has nontrivial solutions, therefore, linearly dependent.
+	\[  \begin{bmatrix}  1	& 2	& 4\\ 2 & 1  &  -1\\ 4  &  3  &  1   \end{bmatrix} \begin{bmatrix} c_1 \\ c_2  \\ c_3   \end{bmatrix}  = \begin{bmatrix}  0 \\ 0 \\  0  \end{bmatrix} \]
+	
+\end{example}
+
+
+
+
+
+
+
+
+\begin{theorem}
+	Let ${\bf x}_1, {\bf x}_1, \dots, {\bf x}_n \in \mathbb{R}^n$ and let $X = ({\bf x}_1, \dots, {\bf x}_n)$.  The vectors will be linearly dependent if and only if $X$ is singular.
+	
+	% add proof later 
+	
+\end{theorem}
+
+
+
+
+ \begin{tcolorbox}[colback=yellow!20!,colframe=gray!15!]
+
+A matrix $A=({\bf x}_1, {\bf x}_1, \dots, {\bf x}_n )$ is singular $\Leftrightarrow  \det(A) =0  \Leftrightarrow {\bf x}_1, {\bf x}_1, \dots, {\bf x}_n $ are  dependent.  
+
+ \end{tcolorbox}
+
+
+
+
+
+
+
+
+
+
+
+ \begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+
+\begin{definition}
+	Let $f_1, f_2, \dots, f_n \in C^{(n-1)}[a,b]$ and define 
+	\[  W[f_1, f_2, \dots, f_n](x) = 
+	\begin{vmatrix} 
+		f_1(x) & f_2(x) & \cdots & f_n(x) \\
+		f_1'(x) & f_2'(x) & \cdots & f_n'(x) \\
+		f_1''(x) & f_2''(x) & \cdots & f_n''(x) \\
+		\vdots 	&  	&  \\
+		f_1^{(n-1)}(x) & f_2^{(n-1)}(x) & \cdots & f_n^{(n-1)}(x) \\
+	\end{vmatrix}  \]
+	
+	$W[f_1, f_2, \dots, f_n](x) $ is called the \textbf{Wronskian}.
+\end{definition}
+ \end{tcolorbox}
+
+
+
+
+
+
+
+\begin{theorem}
+	Let $f_1, f_2, \dots, f_n \in C^{(n-1)}[a,b]$.  If there exists a point $x_0 \in [a,b]$ such that $W[f_1, f_2, \dots, f_n](x_0) \ne 0$, then $f_1, f_2, \dots, f_n $ are linearly independent.
+\end{theorem}
+
+
+
+
+
+
+
+
+\begin{example}
+	Show that the vectors $1, x, x^2$, and $x^3$ are linearly independent in $C(-\infty, \infty)$.  
+\end{example}
+
+
+
+
+
+\section*{Next time...}
+Section 3.4: Basis and Dimension
+

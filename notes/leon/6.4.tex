@@ -1,0 +1,116 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+\section*{Overview}
+A matrix $A \in M_n(\R)$ can have complex eigenvalues and eigenvectors.  The primary question considered in this section is: \textbf{What are complex analogs of symmetric and orthogonal matrices, specifically in terms eigenvalues and eigenvectors?}
+
+
+\section*{Learning Outcomes}
+\begin{enumerate}
+	\item Define complex inner products
+	\item Define Hermitian Matrices (conjugate transpose)
+	\item Properties of conjugate transpose matrices, $A^H$
+    	\item Define Unitary matrices
+	\item State Schur's Theorem and the Real Schur Decomposition
+	\item State a Spectral Theorem of a Hermitian matrix and real symmetric matrices
+	\item Define invariant subspace
+	\item Define normal matrix
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+Let $V = \C^n$ denote the vector space of all $n-$tuples of complex numbers.  The set $\C$ of all complex numbers will be taken as the field of scalars.
+
+
+\section{Complex Inner Products}
+
+\begin{definition}
+	If $\alpha = a+bi$ is a complex scalar, then the length of $\alpha$ is given by
+	\[  | \alpha | = \sqrt{ \bar{\alpha} \alpha } = \sqrt{a^2 + b^2 } \]
+\end{definition}
+ 
+ 
+ \begin{example}
+ 	The scalar product of ${\bf x} = (3, 2, 1)^T$ and ${\bf y} = (5, -4, 3)^T$ is
+		\[ {\bf x}^T {\bf y} = (3, 2, 1) \begin{bmatrix} 5 \\ -4 \\3 \end{bmatrix} = 3 \cdot 5 + 2 \cdot (-4) + 1 \cdot 3 = 10 \]
+ \end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\section{Euclidean Length}
+
+Given a vector ${\bf z} \in \mathbb{C}^n$, its \textbf{Euclidean length} is given by
+\begin{align*}
+ || {\bf z} || &= (|z_1|^2 + |z_2|^2 + \cdots + |z_n|^2)^{1/2}\\
+ &= (\bar{z_1} z_1 + \bar{z_2} z_2 + \cdots + \bar{z_n} z_n)^{1/2}\\
+ \end{align*}
+%({\bf x}^T {\bf x})^{1/2} = \sqrt{\sum_{i=1}^n x_i^2} \]
+%A geometric significance of the scalar product
+
+
+
+
+
+
+
+\section{Distance between vectors}
+
+
+\begin{definition}
+	Let ${\bf x}$ and ${\bf y}$  be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$.  The distance between ${\bf x}$ and ${\bf y}$ is defined to by $|| {\bf x} - {\bf y} ||$.
+	
+\end{definition}
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+\begin{theorem}
+	If ${\bf x}$ and ${\bf y}$ are vectors and $\theta$ is the angle between them, then
+	\[  {\bf x}^T {\bf y}   = || {\bf x} || \;  || {\bf y} || \cos \theta \]
+	
+	\begin{proof}
+		Note: $|| {\bf x}||^2 = {\bf x}^T {\bf x}$.    
+		
+		
+		By the Law of Cosines ($c^2 = a^2 + b^2 - 2ab \cos \theta$) we have
+		\[ 			|| {\bf y} - {\bf x} ||^2 = ||{\bf x}||^2 + ||{\bf y}||^2 - 2  \, || {\bf x}||  \, ||{\bf y}|| \cos \theta \] 
+		and so we have, 
+		\begin{align*}
+			 || {\bf x}|| ||{\bf y}|| \cos \theta  &= \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - || {\bf y} - {\bf x} ||^2 \right) \\
+			 &=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf y} - {\bf x})^T({\bf y} - {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf x}^T - {\bf y}^T)({\bf y} - {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - ({\bf x}^T{\bf y}  - {\bf x}^T  {\bf x} - {\bf y}^T {\bf y} + {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + {\bf x}^T  {\bf x} + {\bf y}^T {\bf y} -  {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + ||{\bf x}||^2  +  ||{\bf y}||^2 -  {\bf y}^T {\bf x})   \right) \\
+&=  \frac{1}{2} \left( ||{\bf x}||^2 + ||{\bf y}||^2 - {\bf x}^T{\bf y}  + ||{\bf x}||^2  +  ||{\bf y}||^2 -  {\bf y}^T {\bf x})   \right) 
+		\end{align*}
+	\end{proof}
+\end{theorem}
+
+
+
+%${\bf v} \to {\bf w}$ is the same as:
+%\begin{enumerate}
+%\item Find the coordinate vector of ${\bf v}$ with respect to the ordered basis $E$
+%\item 
+%\end{enumerate}
+
+\section*{Next time...}
+Section 5.3: Least Squares Problem
+

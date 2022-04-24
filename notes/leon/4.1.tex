@@ -1,0 +1,417 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Define Linear Transformation
+	\item Provide several examples and counter examples of linear transformations 
+	\item Linear transformations from $\mathbb{R}^n \to \mathbb{R}^m$
+	\item State some facts regarding linear transformations 
+ 	\item Define the kernel and image of a linear transformation and prove they are subspaces
+    
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\section{Definition of Linear Transformation}
+\begin{definition}
+	$L: V \to W$ is a \textbf{linear transformation} (LT) if and only if
+	\begin{enumerate}
+		\item $L(\alpha {\bf v}) = \alpha L({\bf v})$ \hspace{0.5cm} $\forall \alpha \in \mathbb{F}$  \;  and \;    $\forall {\bf v} \in V$
+		\item $L({\bf v}_1 + {\bf v}_2) = L({\bf v}_1)+ L({\bf v}_2)$ \; $\forall {\bf v}_1, {\bf v}_2 \in V$
+	\end{enumerate}
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+	NOTES: 
+	\begin{enumerate}
+		\item  \#1 says a linear transformation preserves scalar multiplication
+		\item \#2 says linear transformations preserves vector addition 
+		\item \#1 and \#2 can be combined into a single condition
+		\[ L(\alpha {\bf v}_1 + \beta {\bf v}_2) = L(\alpha {\bf v}_1) + L(\beta {\bf v}_2)  \hspace{0.75cm} \forall  \alpha, \beta \in \mathbb{F} \; \text{ and } {\bf v}_1, {\bf v}_2 \in V  \]
+		\end{enumerate}
+\end{definition}
+ 
+ 	
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+ 
+ 
+ 
+ \section{Examples of Linear Transformations}
+\begin{example}
+$L({\bf v}) = 3{\bf v}$  is a Linear Transformation.
+
+\textbf{Proof}\\
+Need to check if $L$ preserves scalar multiplication and vector addition.\\
+Let $\alpha, \beta \in \mathbb{R}$ and ${\bf v}_1, {\bf v}_2 \in V$.  By the third note above, consider, 
+\begin{align*}
+L(\alpha {\bf v}_1 + \beta {\bf v}_2) &= 3 (\alpha {\bf v}_1 + \beta {\bf v}_2)\\
+							&= 3 (\alpha {\bf v}_1) + 3(\beta {\bf v}_2)\\
+							&= \alpha (3 {\bf v}_1) + \beta (3 {\bf v}_2)\\
+							&= \alpha L({\bf v}_1)  + \beta L({\bf v}_2)
+\end{align*}
+	
+	
+ 
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+$L:\mathbb{R}^2 \to \mathbb{R}^2$ defined by $L({\bf x}) = (x_1, -x_2)^T$  is a Linear Transformation.  Geometrically, what is this transformation?
+
+Consider the following
+\begin{align*}
+L(\alpha {\bf x}+ \beta {\bf y}) &=  L \{ (\alpha x_1 + \beta y_1, \alpha x_2 + \beta y_2)^T\}\\
+&= (\alpha x_1 + \beta y_1, -(\alpha x_2 + \beta y_2))^T\\
+&=  (\alpha x_1,  -(\alpha x_2)^T + (  \beta y_1, -(\beta y_2)^T\\
+&= \alpha(x_1, -x_2)^T + \beta (y_1, -y_2)^2\\
+&= \alpha L({\bf x}) + \beta L({\bf y})
+\end{align*}
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\begin{example}
+$L:\mathbb{R}^2 \to \mathbb{R}^2$ defined by $L({\bf x}) = (-x_2, x_1)^T$  is a Linear Transformation.  Geometrically, what is this transformation?
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+\begin{example}
+$L:\mathbb{R}^2 \to \mathbb{R}$ defined by $L({\bf x}) = x_1+x_2$  is a Linear Transformation.  % Geometrically, what is this transformation?
+
+\begin{align*}  L(\alpha {\bf x} + \beta {\bf y}) &= L \left( (\alpha x_1 + \beta y_1,  \alpha x_2 + \beta y_2)^T \right)\\
+&= (\alpha x_1 + \beta y_1) + (\alpha x_2 + \beta y_2)\\
+&= (\alpha x_1 +   \alpha x_2) + (\beta y_1 + \beta y_2)\\
+&= \alpha (x_1 + x_2) + \beta (y_1 + y_2)\\
+&= \alpha L({\bf x}) + \beta L({\bf y})
+\end{align*}
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+\begin{example}
+$L:\mathbb{R}^2 \to \mathbb{R}^3$ defined by $L({\bf x}) = (x_2, x_1, x_1+x_2)^T$  is a Linear Transformation.  
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+\begin{example}
+$L:\mathbb{R}^3 \to \mathbb{R}^2$ defined by $L({\bf x}) = (x_1+x_2, x_2+x_3)^T$  is a Linear Transformation.  
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+$D:C^1[a,b] \to C[a,b]$ defined by $D(f) =f'$  is a Linear Transformation (See p. 85 \cite{simmons1996calculus}).
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\begin{example}
+Let $f(x) \in C[a,b]$ (actually, it is sufficient for $f$ to be non-negative real-valued function on the interval $[a, b]$).  Define $L:C[a,b] \to \mathbb{R}$ where $L(f) =\int_a^b f(x)$.  Show $L$  is a Linear Transformation (See (7) and (8) p. 215 \cite{simmons1996calculus}).
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+\begin{example}
+$M:\mathbb{R}^2 \to \mathbb{R}$ defined by $M({\bf x}) = \sqrt{x_1^2 + x_2^2}$  is NOT a Linear Transformation.  
+
+It is not difficult to see that $M(\alpha {\bf x}) =| \alpha | \sqrt{x_1^2 +x_2^2} \ne \alpha M({\bf x})$. 
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\begin{example}
+Show $L(x) = x+a$ is NOT a Linear Transformation.  
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{$A_{m \times n}$ matrix defines a Linear Transformation}
+
+
+\begin{theorem}
+Every $m \times n$ matrix corresponds to  linear transformation $L:\mathbb{R}^n \to \mathbb{R}^m$ defined by 
+\[  L_A({\bf x}) = Ax \]
+
+This transformation is linear since, 
+\begin{align*}
+	L_A(\alpha {\bf x} + \beta {\bf y}) &=  A(\alpha {\bf x} + \beta {\bf y})\\
+	&= \alpha A {\bf x} + \beta A {\bf y}\\
+	&= \alpha L_A({\bf x}) + \beta L_A({\bf y})
+\end{align*}
+\end{theorem}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Some Facts about Linear Transformations}
+
+
+\begin{theorem}
+Let $L: V \to W$ be a linear transformation, then
+\begin{enumerate}
+	\item $L(0) = 0$.   (Zero gets mapped to zero, $0 \to 0$)
+	
+	\item $L(c_1 {\bf v}_1 + \cdots + c_n {\bf v}_n) = c_1 L({\bf v}_1) + \cdots +  c_n L({\bf v}_n)$.  
+	
+	\item $L(-{\bf x}) = -L({\bf x})$
+\end{enumerate}
+
+
+\begin{proof}  Let ${\bf v} \in V$ and ${\bf v}_i \in V$.
+
+	(1). Because $L(\alpha {\bf v}) = \alpha L({\bf v}) \;\;\; \forall \alpha \in \mathbb{F}$.  In particular, it must be true for $\alpha = 0_{\mathbb{F}}$.  Therefore, we have $L({\bf 0}) = {\bf 0}$.
+	
+	
+	
+	(2).  By induction, (Base case $n=2$), suppose true for $n$ and consider
+	\begin{align*}
+	L(c_1 {\bf v}_1 + \cdots + c_n {\bf v}_n + c_{n+1} {\bf v}_{n+1}) &= L(c_1 {\bf v}_1 + \cdots + c_n {\bf v}_n)  + c_{n+1} L({\bf v}_{n+1})   \; \text{ (by base case)} \\
+	&=  c_1 L({\bf v}_1) + \cdots +  c_n L({\bf v}_n)+ c_{n+1} L({\bf v}_{n+1})  \;  \text{ (by inductive hyp.)}
+	\end{align*}
+	  
+	
+	
+	(3).  
+	 \begin{align*}
+		0 = L({\bf 0}) 	&= L(-{\bf v}+ {\bf v})\\
+				&= L(-{\bf v}) + L({\bf v})
+	\end{align*}
+	\[  \Rightarrow  L(-{\bf v})  = - L({\bf v}) \]
+	
+	
+	
+	
+\end{proof}
+\end{theorem}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Kernel and Image of $L$}
+
+\begin{definition}  Given $L:V \to W$ where $V, W$ are vector spaces, the \textbf{kernel of $L$} is defined by 
+\[ ker(L) = \{ v \in V \; | \; L(v) = 0 \} \]
+\end{definition}
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\begin{definition}
+Given $L:V \to W$ where $V, W$ are vector spaces and $S$ a subspace of $V$, then the \textbf{image of $S$ under $L$} is defined by 
+\[  L(S) = \{ w \in W \;  |  \;   \exists v \in V \; \text{ such that }  \;  w=L(v) \} \]
+
+\end{definition}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\begin{theorem}
+% ker is a subspace of V and the image is a subspace of W
+ If $L:V \to W$ is a linear transformation where $V, W$ are vector space, then $ker(L)$ is a subspace of $V$.  
+ 
+ \begin{proof}
+ Recall: need to show $ker(L)$ is (i) non-empty, (ii) closed under scalar multiplication, and (iii) closed under addition.   Suppose $x, y \in ker(L)$ and $\alpha \in \mathbb{F}$. 
+ 
+ \begin{enumerate}
+ 	\item Since $L(0) = 0$, then $0 \in ker(L)$, thus not empty.   
+	
+	\item Consider, $L(\alpha x) = \alpha L(x) = \alpha \cdot 0 = 0$, thus $\alpha x \in ker(L)$.    
+	
+	\item Next consider, $L(x+y) = L(x) + L(y) = 0+ 0 = 0$, therefore $x+y \in ker(L)$.
+	
+	
+ \end{enumerate}
+ \end{proof}  
+\end{theorem}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\begin{theorem}
+% ker is a subspace of V and the image is a subspace of W
+ If $L:V \to W$ is a linear transformation where $V, W$ are vector space and suppose $S$ is a subspace of $V$, then $L(S)$ is a subspace of $W$.  
+ 
+ \begin{proof}
+ Recall: need to show $L(S)$ is (i) non-empty, (ii) closed under scalar multiplication, and (iii) closed under addition.   Suppose $u, w \in L(S)$ and $\alpha \in \mathbb{F}$. 
+ 
+ \begin{enumerate}
+ 	\item Since $S$ is a subspace of $V$, $0 \in S$.  Furthermore, because $L(0) = 0_W$, then $0_W \in L(S)$, thus not empty.   
+	
+	\item Because $w \in  L(S)$, there exists a $v \in S$ such that $w = L(v)$.  Consider $\alpha w  = \alpha L( v) =  L(\alpha v) $.  Now $\alpha v \in S$ since it is a subspace, therefore, $\alpha w \in L(S)$.    
+		
+	\item Because $u, w \in L(S)$, there exists $x,y \in S$ such that $u=L(x)$ and $w=L(y)$.  Consider, $u+w = L(x) + L(y) = L(x+y)$.  Therefore, $u+w \in L(S)$.
+	
+	
+ \end{enumerate}
+ \end{proof}  
+\end{theorem}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\section*{Next time...}
+Section 4.2: Matrix Representation Theory
+

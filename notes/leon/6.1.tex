@@ -1,0 +1,181 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Define eigenvalues and eigenvectors
+	\item Define characteristic polynomial
+	\item Find Eigenvalues
+	\item Find Eigenvectors
+    	
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Eigenvalues}
+
+\begin{definition}
+	Let $A$ be an $n \times n$ matrix.  A scalar $\lambda$ is an \textbf{eigenvalue} of $A$ if there exists a  nonzero vector ${\bf x}$ such that $$A{\bf x} = \lambda {\bf x}.$$
+	
+	  The vector ${\bf x}$ is the \textbf{eigenvector} belonging to eigenvalue $\lambda$.
+\end{definition}
+ 
+ 
+ \begin{example}
+ 	Let 
+	\[ {\bf x} = (2, 1)^T  \; \; \text{   and  }  \;\; A =  \begin{bmatrix} 4 & -2 \\ 1  & 1 \end{bmatrix}. \]
+	
+	Note that \[ A {\bf x} = 3 {\bf x} \]
+	
+	Therefore, $\lambda = 3$ is an eigenvalue and ${\bf x}$ is the associated eigenvector.
+ \end{example}
+
+
+
+\subsection{Finding Eigenvalues}
+The insight of finding eigenvalues comes from considering the following:
+\begin{align*}
+A {\bf x} &= \lambda {\bf x} \\
+A {\bf x} - \lambda {\bf x} &= {\bf 0} \\
+(A  - \lambda I) {\bf x} &= {\bf 0} \\
+\end{align*}
+To obtain a nontrivial solution, $N(A - \lambda I) \ne {\bf 0}$.  That is, $A-\lambda I$ is singular.  Therefore, $\det (A - \lambda I) = 0$.  Let, 
+\[  p(\lambda) =   \det (A - \lambda I)  \]
+
+
+\subsection*{Steps to find eigenvalues}
+\begin{enumerate}
+	\item Find the determinant of $A - \lambda I$.  This will be a polynomial in $\lambda$, namely $ p(\lambda)$.
+	\item Set $p(\lambda) = 0$ and solve for $\lambda$.  You could try factoring or using the quadratic formula  (if it is degree 2).  The solutions are the eigenvalues.  
+\end{enumerate}	
+
+\rule[0.01in]{\textwidth}{0.0025in}
+
+\begin{example}
+	\[ A =  \begin{bmatrix} 4 & -2 \\ 1  & 1 \end{bmatrix}. \]
+	Using the ordered list above, we have, 
+	
+	\begin{enumerate}
+	\item Find the determinant of $A - \lambda I$.  
+	\begin{align*}   
+	\begin{vmatrix} 4 -\lambda & -2 \\ 1  & 1-\lambda \end{vmatrix} &= (4-\lambda)(1-\lambda)-(-2)(1)\\
+	&= 4-5 \lambda + \lambda^2 +2\\
+	 &= \lambda^2 - 5\lambda+6\\
+	 &= p(\lambda)
+	 \end{align*}
+	
+	
+	
+		\item Set $p(\lambda) = 0$ and solve for $\lambda$.  
+		\begin{align*}
+			\lambda^2 - 5\lambda+6 &= 0\\
+			(\lambda - 2)(\lambda - 3) &= 0\\
+			\Rightarrow \lambda = 2 \;\; \text{ or } \;\; \lambda  = 3
+		\end{align*}
+		Therefore the eigenvalues of $A$ are 
+		\[  \text{Eigenvalues } = \{ 2,3 \} \]
+		\end{enumerate}	
+
+
+	
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+In MATLAB
+\begin{verbatim}
+>> A = [4 -2; 1 1];
+>> lambda = eigs(A);
+\end{verbatim}
+\rule[0.01in]{\textwidth}{0.0025in}
+
+\begin{fact}
+Geometric multiplicity is less than or equal to the algebraic multiplicity.
+\end{fact}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+\section{Eigenvectors}
+Associated with each eigenvalue are nonzero \textbf{eigenvector}(s).  
+\subsection{Finding Eigenvalues}
+\begin{enumerate}
+\item For each eigenvalue, $\lambda_i$, in the spectrum, find 
+\[ N(A - \lambda_i I) \]
+by solving 
+\[  (A - \lambda_i I) {\bf x} = {\bf 0} \]
+
+
+\item Write as an \textbf{eigenspace}, (the span of the eigenvectors associated with the particular eigenvalue).  
+
+\end{enumerate}
+
+
+
+\subsection{Equivalent Statements}
+\begin{enumerate}
+	\item 
+\end{enumerate}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\begin{example}
+Let \[ A =  \begin{bmatrix} 4 & -2 \\ 1  & 1 \end{bmatrix}. \]
+Find the eigenvectors of $A$.  We have already found the eigenvalues, $\lambda_1 = 2$ and $\lambda_2=3$.  We have to find the eigenvectors associated with each eigenvalue.  Let's start with $\lambda_1 = 2$.
+
+\[  (A - 2I) {\bf x} = {\bf 0} \]
+Therefore, we solve
+\[   
+\begin{bmatrix} 4-2 & -2 & 0 \\ 1  & 1-2 & 0   \end{bmatrix}  \Rightarrow \begin{bmatrix} 2 & -2 & 0 \\ 1  & -1 & 0   \end{bmatrix}  \Rightarrow \begin{bmatrix} 2 & -2 & 0 \\ 0  & 0 & 0   \end{bmatrix}
+\]
+Therefore, we have that $x_2$ is a free variable, say $x_2 = \alpha$.  Then we backsubstitute to get that $x_1 = \alpha$.  Therefore, the eigenvector associated with $\lambda  = 2 $ is, 
+\[  {\bf x} = \alpha  \begin{bmatrix} 1 \\ 1   \end{bmatrix} \]
+The eigenspace  is span by $(1,1)^T$.
+
+
+
+Next we find the eigenvector associated with $\lambda = 3$.  Similar to above
+\[   
+\begin{bmatrix} 4-3 & -2 & 0 \\ 1  & 1-3 & 0   \end{bmatrix}  \Rightarrow \begin{bmatrix} 1 & -2 & 0 \\ 1  & -2 & 0   \end{bmatrix}  \Rightarrow \begin{bmatrix} 1 & -2 & 0 \\ 0  & 0 & 0   \end{bmatrix}
+\]
+Therefore, we have that $x_2$ is a free variable, say $x_2 = \alpha$.  Then we backsubstitute to get that $x_1 = 2\alpha$.  Therefore, the eigenvector associated with $\lambda  = 3 $ is, 
+\[  {\bf x} = \alpha  \begin{bmatrix} 1 \\ 2   \end{bmatrix} \]
+The eigenspace  is span by $(1,2)^T$.
+
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+\section*{Next time...}
+Section 5.3: Least Squares Problem
+

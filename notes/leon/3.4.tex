@@ -1,0 +1,338 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+In our quest to find the optimal spanning set we covered the concepts of \textit{spanning} and \textit{linear independence/dependence}.   Now we pull together these concepts to obtain the \textit{optimal spanning set} (i.e., a \textbf{basis}) of a vector space. 
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Define Basis
+	\item Provide  examples of bases in $\mathbb{R}^n$
+	\item Definite dimension of a vector space/subspace
+	\item Provide and prove propositions of basis 
+    
+\end{enumerate}
+
+
+
+
+
+The elements of the periodic table spans the world.  The elements $\{H, O, N \}$ span a ``subspace" of life and are independent and is a basis for that subspace.  However, given a different subspace that includes sugar, but they do not span that particular subspace because you could not include $C_6H_{12}O_6$. 
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+ 
+ RECALL:
+ 
+ 
+
+
+
+% DEFINITION 
+\begin{tcolorbox}[colback=white!10!,colframe=gray!15!]
+	\begin{definition}
+		The vectors ${\bf v}_1, {\bf v}_2,  \dots, {\bf v}_n \in V$ are \textbf{linearly independent} if 
+\[  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n = {\bf 0} \]
+
+then $c_i = 0 \; \forall i$.
+
+
+	\end{definition}
+	 
+\end{tcolorbox}
+
+
+
+
+
+
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+% defintion
+\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\begin{definition}
+	The vectors ${\bf v}_1, {\bf v}_2, {\bf v}_3, \dots , {\bf v}_n$ for a \textbf{basis} of a vector space $V$ if and only if
+	\begin{enumerate}
+		\item ${\bf v}_1, {\bf v}_2, {\bf v}_3, \dots , {\bf v}_n$  are linearly independent
+		\item $V = \text{Span}({\bf v}_1, {\bf v}_2, {\bf v}_3, \dots , {\bf v}_n)$ 
+	\end{enumerate}
+	
+	In short, a basis is a linearly independent spanning set.
+\end{definition}
+
+
+\end{tcolorbox}
+
+
+
+NOTE: There can be many bases for a given vector space since there are many different linearly independent spanning sets.
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+% example
+\begin{example}
+	For $V = \mathbb{R}^3$, the following form a basis since they are linearly independent spanning sets:
+	
+	\begin{enumerate}
+		\item $\{ (1,0, 0)^T, (0, 1, 0)^T, (0, 0, 1)^T \}$.  This is called the \textit{standard basis} for $\mathbb{R}^3$.
+		
+		\item $\{  (1,1,1)^T, (0, 1, 1)^T, (2, 0, 1)^T  \}$
+		
+		\item $\{  (1,1,1)^T, (1, 1, 0)^T, (1, 0, 1)^T  \}$
+	\end{enumerate}
+\end{example}
+
+
+NOTE:  Each basis contains exactly three vectors.
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+% example
+\begin{example}
+	A slightly more abstract example is to find a basis for the vector space $V = \mathbb{R}^{2 \times 2}=M_2(\mathbb{R})$.  The  \textit{standard basis}  is:
+	
+	\[
+	E_{11} = \begin{bmatrix} 1 & 0\\ 0 & 0 \end{bmatrix}, E_{12} = \begin{bmatrix} 0 & 1\\ 0 & 0 \end{bmatrix}, E_{21} = \begin{bmatrix} 0 & 0\\ 1 & 0 \end{bmatrix}, E_{22} = \begin{bmatrix} 0 & 0\\ 0 & 1 \end{bmatrix}
+	\]
+	
+This set (i) spans $M_2(\mathbb{R})$ since every matrix can be written as a linear combination of these four, and (ii) this is an independent set since if
+\[ c_1 E_{11} +  c_2 E_{12} +  c_3 E_{21} +  c_4 E_{22}  = 	\begin{bmatrix} 0 & 0\\ 0 & 0 \end{bmatrix} \]
+implies that $c_1 = c_2 = c_3 = c_4 = 0$.  
+	
+\end{example}
+
+
+ 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ % theorem
+\begin{theorem}
+	If  $V = \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$, then any collection of vectors in $V$, where $m > n$, is linearly dependent.
+		
+	\begin{proof}
+		Let ${\bf u}_1, {\bf u}_2, \dots , {\bf u}_m$ be a collection of  $m$ vectors in $V$ where $m>n$.  Then, $V = \text{Span}({\bf v}_1, {\bf v}_2, \dots, {\bf v}_n)$, we have
+		
+		\[  {\bf u}_i = a_{i1} {\bf v}_1 + a_{i2} {\bf v}_2 + \cdots + a_{in} {\bf v}_n = \sum_{j=1}^n a_{ij} {\bf v}_j  \hspace{0.25in} \text{ for }  \hspace{0.25in}  i=1, 2, \dots, m 
+		\]
+		A linear combination of ${\bf u}_1, {\bf u}_2, \dots , {\bf u}_m$ can be written as, 
+		
+\[  c_1{\bf u}_1 + \cdots + c_m {\bf u}_m =  \sum_{i=1}^m c_i \left( \sum_{j=1}^n a_{ij}  {\bf v}_j     \right)  =   
+\sum_{j=1}^n  \left( \sum_{i=1}^m a_{ij} c_i       \right)  {\bf v}_j 
+   \]
+		
+		
+	Consider  the system of equations homogeneous equations:
+	\[  \sum_{i=1}^m a_{ij} c_i   = 0   \hspace{0.25in} j = 1, 2, \dots, n \] 	
+		By previous theorem, there is a nontrivial solution ($\hat{c}_1, \dots , \hat{c}_m)^T$.  Thus, the vectors ${\bf u}_1, {\bf u}_2, \dots , {\bf u}_m$ are linearly dependent.
+		
+		
+			\end{proof}
+\end{theorem}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+% corollary
+\begin{corollary}
+	If ${\bf v}_1, {\bf v}_2, \dots , {\bf v}_n$ and ${\bf u}_1, {\bf u}_2, \dots , {\bf u}_m$ are bases for $V$, then $n=m$.
+	
+	\begin{proof}
+		So, ${\bf v}_1, {\bf v}_2, \dots , {\bf v}_n$ span $V$ and ${\bf u}_1, {\bf u}_2, \dots , {\bf u}_m$ are independent, then $m \le n$.  However, by symmetric argument $n \le m$.  Therefore, $m=n$.
+	\end{proof}
+\end{corollary}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+% defintion
+\begin{definition}
+	If $V$ has a basis consisting of $n$ vectors, then $dim(V) = n$.  That is, the \textbf{dimension} of $V$ is finite if the basis contains a finite number of elements; otherwise $V$ is infinite dimensional.
+\end{definition}
+
+
+
+
+% example
+\begin{example}
+	$P$, the set of all polynomials is infinite dimensional since if it was span by only $n$ vectors, but $W[1, x, x^2, \dots, x^n] >0$, thus these $n+1$ vectors are linearly independent contrary to the theorem above.
+\end{example}
+
+
+
+
+
+% theorem
+\begin{theorem}
+If $V$ is a vector space of dimension $n>0$ (i.e., not the zero space), then
+
+\begin{enumerate}
+	\item any set of $n$ linearly independent vectors spans $V$.
+	\item any $n$ vectors that span $V$  are linearly independent.
+\end{enumerate}
+
+% proof
+\begin{proof}
+1.  Suppose $dim(V) = n$ and that ${\bf v}_1, \dots, {\bf v}_n$ are linearly independent.  Let ${\bf v} \in V$.   Therefore, ${\bf v}_1, \dots, {\bf v}_n, {\bf v}$ are linearly dependent.  Thus $\exists c_i \ne 0$ such that 
+\[  c_1 {\bf v}_1 + \cdots + c_n {\bf v}_n + c_{n+1} {\bf v} = 0 \]
+It must be (at least)  the case that $c_{n+1} \ne 0$ since else $ {\bf v}_1, \dots, {\bf v}_n$ would be linearly dependent.  Therefore, we can solve for ${\bf v}$, 
+
+\[ {\bf v} = \frac{-c_1}{c_{n+1}} {\bf v}_1 + \frac{-c_2}{c_{n+1}} {\bf v}_2 + \cdots + \frac{-c_n}{c_{n+1}} {\bf v}_n  \]
+Since ${\bf v}$ was an arbitrary vector in $V$, ${\bf v}_1, \dots, {\bf v}_n$ spans $V$.
+
+
+
+2.  Since the $dim(V) = n$, there are $n$ vectors in the basis.  Recall, a basis is a linearly independent (LI) spanning set, therefore, Since the $n$ vectors span $V$ and $dim(V) = n$, they must be LI.
+
+
+\end{proof}
+
+
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}
+If $V$ is a vector space of dimension $n>0$, then 
+\begin{enumerate}
+	\item no set of fear than $n$ vectors can span $V$
+	\item any subset of fewer than $n$ linearly independent vectors can be extended to form a basis of $V$
+	\item any spanning set containing more than $n$ vectors can be pared down to form a basis for $V$
+\end{enumerate}
+
+
+
+\begin{proof}
+	1.  If the dimension is $n$, then there has to be $n$ linearly independent vectors and no fewer.
+	
+	2.  Suppose ${\bf v}_1, \dots , {\bf v}_k$ are linearly independent with $k<n$.  Repeatedly add a vector until it spans $V$.  
+	
+	3.  If there are more than $n$ vectors, they must be dependent.  Write one of the vectors as a linear combination of the other vectors, repeat until having only $n$ vectors.
+\end{proof}
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+\begin{example}
+	The dimension of the subspace span by $1, \cos 2x, \cos^2 x$ is 2, since there are two linearly independent vectors.  
+	
+	Notice that $2\cos^2 x - 1 = \cos 2x$, therefore, these vectors are dependent.
+	
+	Alternatively, compute the Wronskian, 
+	
+	\[   
+	W[1, \cos(2x), \cos^2 x]=  
+	\begin{vmatrix} 
+	1	&	\cos(2x) 	&	\cos^2 x	 \\
+	0	&	-2\sin(2x) 	&	-2\sin(x) \cos (x)\\
+	0	&	-4\cos(2x) 	&      -2\cos (2x)		
+	\end{vmatrix} = 0
+		  \]  
+	
+	
+\end{example}
+
+
+
+
+
+
+\section*{Next time...}
+Section 3.5: Change of Basis
+

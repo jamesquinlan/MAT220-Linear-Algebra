@@ -1,0 +1,145 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+Vector Spaces (or \textit{linear spaces}) is a mathematical system of elements that has the operations of additional and scalar multiplication along with algebraic rules.  These systems are applicable to many diverse contexts in mathematics.   The basic models for vector spaces are Euclidean vector spaces $\mathbb{R}^n$ for $n=1, 2, 3 \dots$.  
+
+For simplicity, start with $\mathbb{R}^2$ where nonzero vectors are represented geometrically by directed line segments.
+\section*{Objectives}
+\begin{enumerate}
+	\item Introduce vector spaces and vector space axioms
+	\item Provide several examples of vector spaces
+	\item List additional properties of vector spaces   
+\end{enumerate}
+
+
+
+ 
+ 
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+
+ 
+%\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+\section*{Vector Space Axioms}
+\begin{definition}
+Let $(V, +, \cdot)$ be a set on which the operations of addition and scalar multiplication are defined.  Suppose ${\bf x}, {\bf y}, {\bf z} \in V$ and $F$ is a field, then $(V, +, \cdot_F)$ forms a \textbf{vector space} over the field $F$ if the following axioms are satisfied:  
+	\begin{tcolorbox}[colback=yellow!10!,colframe=gray!15!]
+
+\begin{enumerate}
+	\item[A0. ] [Closed under addition]   ${\bf x}+{\bf y} \in V$
+	\item[A1. ] [Commutative over addition]   ${\bf x}+{\bf y} = {\bf y}+{\bf x} $
+	\item[A2. ] [Associative over addition]   $({\bf x}+{\bf y}) + {\bf z}= {\bf x}+({\bf y} + {\bf z})$
+	\item[A3. ] [Additive Identity]   $\exists {\bf 0} \in V$ such that $\forall {\bf x} \in V, {\bf x} + {\bf 0} = {\bf x}$
+	\item[A4. ] [Closed under addition]   $\forall {\bf x} \in V, \exists -{\bf x} \in V: {\bf x } + (-{\bf x}) = {\bf 0}$
+	\item[M0. ]    $\alpha {\bf x} \in V, \forall \alpha \in F$
+	\item[M1. ]    $\alpha ({\bf x}+{\bf y} = \alpha {\bf x} + \alpha {\bf y}$
+	\item[M2. ]  $(\alpha + \beta) {\bf x} = \alpha {\bf x} + \beta {\bf x}, \forall \alpha, \beta \in F, \forall {\bf x} \in V$
+	\item[M3. ]  $(\alpha \beta) {\bf x} = \alpha (\beta {\bf x})$
+	\item[M4. ] $1{\bf x} = {\bf x}$
+
+\end{enumerate}
+	 
+	\end{tcolorbox}
+	
+\end{definition}
+	
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+\begin{example}
+Demonstrate the necessity of the closure property, consider
+\[ W = \{ (a,1)  \;  : \; a \in \mathbb{R}  \} \]
+Let ${\bf x}, {\bf y} \in W$, then ${\bf x} + {\bf y} = (a_x, 1) + (a_y, 1) = (a_x+a_y, 2) \notin W$
+\end{example}
+	
+	 
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ \section*{Alternative Vector Spaces}
+\begin{enumerate}
+	\item $C[a,b]$ - the set of all real-valued functions defined and continuous on the closed interval $[a,b]$
+	\item $P_n$ - the set of all polynomials of degree less than $n$
+	
+	\item $M_n(\mathbb{R}) = \mathbb{R}^{n \times n}$
+\end{enumerate}
+
+
+
+\section*{Additional Properties of Vector Spaces}
+
+\begin{theorem}
+If $V$ is a vector space and ${\bf x} \in V$, then
+\begin{enumerate}
+	\item $0 {\bf x} = {\bf 0}$
+	\item ${\bf x} + {\bf y} = {\bf 0} \Rightarrow  {\bf y} = - {\bf x}$ (additive inverse is unique)
+	\item $(-1) {\bf x} = - {\bf x}$
+\end{enumerate}
+
+%\begin{proof}
+%\begin{enumerate}
+%	\item By axioms, ${\bf x} = 1 {\bf x} = (1+0) {\bf x} = 1 {\bf x} + 0 {\bf x} = {\bf x} + 0{\bf x}$ Therefore, 
+%	\[ {\bf 0} = - {\bf x}+ {\bf x} = - {\bf x} + ({\bf x}+ 0 {\bf x}) = (-{\bf x} + {\bf x}) + 0{\bf x} = 0 +0 {\bf x} = 0 {\bf x} \]
+
+
+%	\item Suppose ${\bf x} + {\bf y} = {\bf 0}$.  Adding $-{\bf x}$ to both sides of the equation we have
+%	\[ -${\bf x} + (${\bf x} + {\bf y}) = -{\bf x} + {\bf 0} = -{\bf x} \]
+%	Therefore, 
+%	\[ (-${\bf x} + ${\bf x}) + {\bf y} = -{\bf x} + {\bf 0} = -{\bf x} \]
+
+	
+%	\end{enumerate}
+%\end{proof}
+\end{theorem}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+
+
+
+%\section*{Summary}
+
+
+ %In this section we 
+%\begin{enumerate}
+%	\item Introduced and defined elementary matrices
+%	\item Enumerated three equivalent conditions for nonsingularity 
+%	\item Defined and discussed triangular (upper \& lower) and diagonal matrices
+%	\item Used the inverse of the product of a finite sequence of elementary matrices in part of the factorization of %matrix $A$ 
+	
+	
+% \end{enumerate}
+ 
+
+
+
+\section*{Next time...}
+Section 3.2: Subspaces
+

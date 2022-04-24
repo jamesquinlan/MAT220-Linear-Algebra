@@ -1,0 +1,413 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+% \section*{Introduction}
+
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Reiterate that each matrix defines a linear transformation
+	\item Show that each linear transformation mapping $\mathbb{R}^n \to \mathbb{R}^m$ has an associated $m \times n$ matrix $A$ such that $L(x) = Ax$.
+	\item Show that any linear transformation between finite-dimensional spaces can be represented by a matrix
+	\item State matrix representation theorem
+    
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Every matrix defines a linear transformation}
+From section 4.1 page 174 shows that if $A$ is a matrix,  a linear transformation $L: \mathbb{R}^n \to \mathbb{R}^m$ can be defined as $L({\bf x}) = A {\bf x}$. 
+
+
+% \textbf{every matrix represents some linear transformation}.
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\section{Every linear transformation is a matrix}
+\begin{theorem}
+	If $L$ is a linear transformation mapping  $\mathbb{R}^n \to \mathbb{R}^m$, then there exists an $m \times n$ matrix $A$ such that $$L({\bf x}) = A{\bf x}$$
+	for each ${\bf x} \in \mathbb{R}^n$.  
+	
+	\begin{proof}
+		For $j = 1, \dots, n$, define
+		\[  {\bf a}_j = L({\bf e}_j)  \]
+		
+		and let $A = ({\bf a}_1 \;  \;  {\bf a}_2 \; \; \cdots {\bf a}_n )$.  If
+		\[ {\bf x} = x_1 {\bf e}_1 + x_2 {\bf e}_2 + \cdots + x_n {\bf e}_n  \]
+		is an arbitrary element of $\mathbb{R}^n$, then 
+		\begin{align*}
+			L({\bf x}) &= x_1 L({\bf e}_1) + x_2 L({\bf e}_2) + \cdots + x_n L({\bf e}_n)\\
+			&= x_1 {\bf a}_1 + x_2 {\bf a}_2 + \cdots + x_n {\bf a}_n\\
+			&=\begin{pmatrix} {\bf a}_1 &   {\bf a}_2 &  \cdots &  {\bf a}_n \end{pmatrix} \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}  \\
+			& = A {\bf x}
+		\end{align*}
+		This establishes that each linear transformation from $\mathbb{R}^n$ into $\mathbb{R}^m$ can be represented in terms of a $m \times n$ matrix.  Moreover, it provides a construction of the matrix $A$.  To get the first column, see what effect $L$ has on the first basis vector ${\bf e}_1$;  the second column of $A$ is obtained by $L({\bf e}_2)$, and so on.  This representation is called the \textbf{standard matrix representation of $L$}.
+	\end{proof}
+\end{theorem}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+\begin{example}
+Find the matrix $A$ that represents the linear transformation given by $L: \mathbb{R}^3 \to \mathbb{R}^2$ by 
+\[ L({\bf x}) = (x_1 + x_2, x_2+x_3)^T \]
+
+We can easily show this is a linear transformation.  We need to construct the matrix $A$ as follows: 
+\begin{align*}
+	L((1,0,0)^T) &= (1,0)^T\\ 
+	L((0,1,0)^T) &= (1,1)^T\\ 
+	L((0,0,1)^T) &= (0,1)^T
+\end{align*}
+Therefore, 
+\[  A = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1\end{bmatrix}  \]
+\end{example}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\section{Arbitrary matrix representations}
+
+The primary question now should be, can we generalize?  We can represent linear transformations from $\mathbb{R}^n \to \mathbb{R}^m$, but what about from $V \to W$ where $V$ and $W$ are finite-dimensional vector spaces of dimensions $n$ and $m$ respectively?  The answer is YES, this is  \textbf{matrix representation theory}.  
+
+
+\begin{theorem} (\textbf{Matrix Representation Theorem})
+
+If $E = \{ {\bf v}_1, {\bf v}_2, \dots, {\bf v}_n \}$ and $F = \{ {\bf w}_1, {\bf w}_2, \dots, {\bf w}_m \}$ are ordered bases for vectors spaces $V$ and $W$, respectively, then, corresponding to each linear transformation $L: V \to W$, there is an $m \times n$ matrix $A$ such that 
+\[  [ L({\bf v})]_F = A[{\bf v}]_E      \hspace{1.0cm}    \text{ for each } {\bf v} \in V \]
+
+$A$ is the matrix representing $L$ relative to the ordered bases $E$ and $F$ (See Figure \ref{fig:mrt}).  In fact, 
+
+\[  {\bf a}_j = [  L({ \bf v}_j)]_F   \hspace{1.0cm}  \text{ for } \;  j = 1, 2, \dots, n  \]
+
+\begin{proof}
+	
+	
+	
+	\textbf{Goal}: To find a matrix $A$ that characterizes the effect of $L$ (i.e., \textit{represents $L$}) 
+	
+ \begin{enumerate}
+	\item Let $E = \{ {\bf v}_1, {\bf v}_2, \dots, {\bf v}_n \}$ be an ordered basis for $V$ and $F =  \{ {\bf w}_1, {\bf w}_2, \dots, {\bf w}_m \}$ be an ordered basis for $W$. 
+	
+	\item Let $L:V \to W$ be a linear transformation
+	
+	% \item Let ${\bf v} \in V$ and express as a linear combination of the basis of $V$:
+	% \[ {\bf v} = x_1{\bf v}_1 + x_2 {\bf v}_2 +  \dots  + x_n {\bf v}_n   \] 
+	
+	% \item We have then, ${\bf x} = [ {\bf v} ]_E$, then $A {\bf x} = {\bf y}$   where the columns of $A$ are defined by ${\bf a}_j = (a_{1j}, a_{2j}, \dots, a_{mj})^T$ be the coordinate vector of $L({\bf v}_j)$ with the respect to $\{ {\bf w}_1, {\bf w}_2, \dots, {\bf w}_m \}$  if and only if 
+	% \[  L({\bf v}) = {\bf w} = y_1 {\bf w}_1 + y_2 {\bf w}_2 + \cdots + y_m {\bf w}_m \]
+	
+
+
+\end{enumerate}
+
+
+
+	
+Let  ${\bf v} = x_1{\bf v}_1 + x_2 {\bf v}_2 +  \dots  + x_n {\bf v}_n $ (i.e., ${\bf x} = [{\bf v}]_E$ the coordinate vector of ${\bf v}$ with respect to $E$), then
+	\begin{align*}
+		L({\bf v}) 	&= x_1 L({\bf v}_1) + x_2 L({\bf v}_2) +  \cdots  + x_n L({\bf v}_n) \hspace{1.5cm}  \exists {\bf w} =  L({\bf v}_i ) \;\;\; \forall i \\
+		% &= \sum_{j=1}^n x_j L({\bf v}_j)\\
+				&= x_1 \sum_{i=1}^m  a_{i1} {\bf w}_i  + x_2 \sum_{i=1}^m  a_{i2} {\bf w}_i  +  \dots  + x_n \sum_{i=1}^m  a_{in} {\bf w}_i \\
+			&= \sum_{j=1}^n x_j \left(   \sum_{i=1}^m  a_{ij} {\bf w}_i    \right)  \\
+			&= \sum_{i=1}^m  \left( \sum_{j=1}^n  a_{ij} x_j \right)  {\bf w}_i 	 
+	\end{align*}
+	
+	Let 
+	\[ y_i = \sum_{j=1}^n  a_{ij} x_j     \hspace{1cm} \text{ for }   i = 1, 2, \dots, m \]
+	\[ {\bf y} = (y_1, y_2, \dots, y_m)^T \]
+	
+	We have, 
+	
+	\begin{align*}
+		L({\bf v}) &=\sum_{i=1}^m  \left( \sum_{j=1}^n  a_{ij} x_j \right)  {\bf w}_i \\
+				&= y_1 {\bf w}_1 + \cdots + y_m {\bf w}_m\\
+				&= {\bf w }
+	\end{align*}
+	That is, ${\bf y} = [{\bf w}]_F$, the coordinate vector of ${\bf w}$ with respect to $F$. 
+	
+	Therefore, $L({\bf v}) = {\bf w}  \Leftrightarrow A{\bf x} = {\bf y}$. 
+	
+	
+	
+
+
+	
+	
+\end{proof}
+
+\end{theorem}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+ \newpage
+ 
+ \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+  
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.16,-0.39) rectangle (10.0,4.0);
+\draw [->] (0.5,3.25) -- (6,3.25);  % top line
+\draw [->] (6.42,2.9) -- (6.42,0.85);  % right down
+\draw [->] (6.42,0.85) -- (6.42,2.9); % right up
+\draw [->] (0.5,0.72) -- (6,0.72);  % bottom
+\draw [->] (0.0,2.9) -- (0.0,0.85);
+\draw [->] (0.0,0.85) -- (0.0,2.9);
+%\draw [->] (0.0,2.84) -- (0.0,1);
+\draw (-0.70,3.57) node[anchor=north west] {${\bf v} \in V$};
+\draw (2.80,3.8) node[anchor=north west] {$L=L_A$};
+\draw (6.03,3.58) node[anchor=north west] {${\bf w} = L({\bf v}) \in W$};
+\draw (6.03,0.66) node[anchor=north west] {$A {\bf x} = [{\bf w}]_F \in \mathbb{R}^m$};
+\draw (-1.1,0.66) node[anchor=north west] {${\bf x} = [{\bf v}]_E \in \mathbb{R}^n$};
+\draw (3,1.36) node[anchor=north west] {$A$};
+\end{tikzpicture}
+    \caption{Matrix Representation Theorem}
+   \label{fig:mrt}
+\end{figure}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\begin{example}
+Let $L:\mathbb{R}^3 \to \mathbb{R}^2$ be a linear transformation defined
+\[ L({\bf x}) = x_1 {\bf b}_1 +(x_2+x_3) {\bf b}_2  \]
+where 
+\[  {\bf b}_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}  \;\;\; \text{ and } \;\;\;    {\bf b}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}     \]
+
+
+Find the matrix $A$ representing $L$ with respect to the ordered bases $\{ {\bf e}_1, {\bf e}_2, {\bf e}_3 \}$ and $\{  {\bf b}_1, {\bf b}_2 \}$.
+
+\textbf{Solution}:  Consider the standard basis under $L$.
+\begin{align*}
+	L({\bf e}_1) &= 1 {\bf b}_1 + 0 {\bf b}_2 \\
+	L({\bf e}_1) &= 0 {\bf b}_1 + 1 {\bf b}_2 \\
+	L({\bf e}_1) &= 0 {\bf b}_1 + 1 {\bf b}_2 
+\end{align*}
+
+\[ A = \begin{bmatrix} 1  &  0  &  0 \\ 0   &  1   &  1  \end{bmatrix} \]
+ 
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\begin{example}
+Let $L:P_3 \to P_2$ be defined by $D(p) = p'$ .  Given the ordered bases $\{ x^2, x, 1 \}$ and $ \{ x, 1 \}$, find a matrix $A$ that represents $D$.  
+
+\textbf{Solution}:  Apply $D$ to the basis of $P_3$, 
+\begin{align*}
+	D(x^2) &= 2x + 0 \cdot 1\\
+	D(x) &= 0 \cdot x + 1 \cdot 1\\
+	D(1) &= 0 \cdot x + 0 \cdot 1
+\end{align*}
+
+The columns of $A$ are the coefficients from above.  Therefore, 
+\[  A  = \begin{bmatrix}  2 & 0 & 0 \\ 0 & 1 & 0  \end{bmatrix} \]
+
+Notice: $D(ax^2 + bx + c) = 2ax + b$ and 
+\[  \begin{bmatrix}  2 & 0 & 0 \\ 0 & 1 & 0  \end{bmatrix}  \begin{bmatrix} a  \\  b  \\ c  \end{bmatrix} =   \begin{bmatrix}  2a \\ b \end{bmatrix}  \]
+
+\end{example}
+
+
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\begin{theorem}
+	Let $E = \{ {\bf u}_1, \dots, {\bf u}_n \}$ and $F = \{ {\bf v}_1, \dots, {\bf v}_m \}$ be ordered bases for $\mathbb{R}^n$ and $\mathbb{R}^m$, respectively.  If $L: \mathbb{R}^n \to \mathbb{R}^m$ is a linear transformation and $A$ is the matrix representing $L$ with respect to $E$ and $F$, then 
+	\[  {\bf a}_j =  B^{-1} L({\bf u}_j) \;\;\;\;\; \text{ for } j = 1, 2, \dots, n \]
+	
+where $B = ({\bf v}_1, {\bf v}_2, \dots, {\bf v}_m)$.
+	
+	\begin{proof}
+		Let $A$ represent $L$, then for $j = 1, 2, \dots, n$
+		\begin{align*}
+			 L({\bf }_j) &= a_{1j} {\bf v}_1 + a_{2j} {\bf v}_2 + \cdots + a_{mj} {\bf v}_m\\
+			 		&= B {\bf a}_j 		
+		\end{align*}
+		
+		$B$ is nonsingular because its columns are a basis of $\mathbb{R}^m$, then 
+	\[  {\bf a}_j = B^{-1} L({\bf u}_j) \]
+
+
+
+	\end{proof}
+		
+\end{theorem}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\begin{corollary}
+	If $A$ is the matrix representing the linear transformation $L: \mathbb{R}^n \to \mathbb{R}^m$ with respect to the bases  $E = \{ {\bf u}_1, \dots, {\bf u}_n \}$ and $F = \{ {\bf v}_1, \dots, {\bf v}_m \}$, then 
+	\[  [ {\bf v}_1, \dots, {\bf v}_m \; | \; L({\bf u}_1), \dots, L({\bf u}_n) ]  \equiv [ I \; | \; A ] \] 
+	
+	
+	\begin{proof}
+	\begin{align*}
+		B^{-1} [ B \; | \; L({\bf u}_1), \dots, L({\bf u}_n) ]  &= [ I  \; | \;   B^{-1} L({\bf u}_1), \dots, B^{-1} L({\bf u}_n) ]\\
+		&=  [ I \;  | \;   {\bf a}_1, \dots, {\bf a}_n ]
+		\end{align*}
+	\end{proof}
+	
+	\end{corollary}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\section*{Computer Graphics and Animation}
+
+There are four primary geometric transformations that are used in computer graphics.
+\begin{enumerate}
+	\item \textit{Dilations} ($c >1$) and contractions ($ 0 < c <1 $)
+	\[  L({\bf x}) = c {\bf x} \] 
+	
+	\item \textit{Reflections} about an axis.  $L_x$ reflects a vector ${\bf x}$ about the $x-$axis.  
+	\[  L_x({\bf x}) =  \begin{bmatrix} x_1 \\ - x_2 \end{bmatrix} \] 
+	Similar for reflection about the $y-$axis.  Can you think of how this would be for $\mathbb{R}^3$?
+	
+	\item \textit{Rotations} by $\theta$
+	
+	\[  L({\bf x} = A {\bf x} = \begin{bmatrix} \cos \theta  & -\sin \theta \\  \sin \theta & \cos \theta   \end{bmatrix} \]
+	
+	
+	\item \textit{Translations} by a vector ${\bf a}$ (not a linear transformation)
+	\[  L({\bf x} = {\bf x} + {\bf a}  \]
+	
+\end{enumerate}
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+
+\section*{Application: Yaw, Pitch, \& Roll of an Airplane}
+
+\begin{enumerate}
+	\item Yaw
+	\[  Y = \begin{bmatrix} \cos u  &  \sin u  &   0 \\  -\sin u  &  \cos u  &   0 \\  0  &  0  &   1  \end{bmatrix}  \]
+	
+	
+	\item Pitch
+	\[  P= \begin{bmatrix} \cos v &  0 &   -\sin v  \\  0  &  1  &   0 \\  \sin v   &  0  &   \cos v  \end{bmatrix}  \]
+	
+	
+	
+	
+	\item Roll
+	\[    R = \begin{bmatrix} 1 &  0 &   0 \\  0  &  \cos w &   -\sin v \\   0    &  \sin w  &   \cos w  \end{bmatrix}  \]
+	
+\end{enumerate}
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+
+
+%${\bf v} \to {\bf w}$ is the same as:
+%\begin{enumerate}
+%\item Find the coordinate vector of ${\bf v}$ with respect to the ordered basis $E$
+%\item 
+%\end{enumerate}
+
+\section*{Next time...}
+Section 4.3: Similarity
+

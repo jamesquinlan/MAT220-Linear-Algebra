@@ -1,0 +1,282 @@
+%\section{Outline}
+%\input{includes/thesis}
+%Given a $m \times n$ system of equations: 
+%\section*{Define arithmetic operations ($+, -, \times$) on matrices}
+\section*{Introduction}
+
+When does $(3,2) = (1,5)$?  If you were asked to plot the point $(3,2)$, first you should ask, ``\textit{with respect to which basis}?''  Until now, you have only worked with one basis, the standard basis.  However, this is an arbitrary choice.  
+
+\section*{Objectives}
+\begin{enumerate}
+	\item Present the idea of coordinates with respect to other basis
+	\item Present method to transition from one basis to another (i.e., change of basis)
+ 	\item Define coordinate vector
+    
+\end{enumerate}
+
+
+
+
+
+There are two primary questions to ask and answer:
+
+\begin{enumerate}
+	\item What are the coordinates of a vector ${\bf x}$ with respect to the basis $U$.
+	\item Given a vector in $U$, (e.g., $c_1{\bf u}_1 + c_2 {\bf u}_2$), what are it coordinates with respect to the standard basis.
+\end{enumerate}
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ \subsection*{Arbitrary basis to standard basis}
+ Given a vector ${\bf c} \in U$, the coordinates in the standard basis are given by
+ \[   {\bf x} = U{\bf c} \] 
+
+
+\begin{example}
+Given the basis ${\bf u}_1 = (1,1)^T, {\bf u}_2 = (-1,1)^T$ of $U$, the vector $(3,2)^T$ with respect to the basis standard basis $E$ is:
+ 
+ \[  \begin{bmatrix}  1 & 1\\ -1 & 1\end{bmatrix} \begin{bmatrix} 3\\2 \end{bmatrix} = \begin{bmatrix} 1\\5 \end{bmatrix}  \]
+
+\end{example}
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{uuuuuu}{rgb}{0.27,0.27,0.27}
+\definecolor{yqyqyq}{rgb}{0.5,0.5,0.5}
+\definecolor{wqwqwq}{rgb}{0.38,0.38,0.38}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.0cm,ystep=1.0cm] (-2.82,-1.5) grid (5,5.7);
+\clip(-2.82,-1.5) rectangle (5,5.7);
+\draw [->,color=wqwqwq] (0,0) -- (1,1);
+\draw [->,color=wqwqwq] (0,0) -- (-1,1);
+\draw [line width=0.4pt,dash pattern=on 5pt off 5pt,color=yqyqyq,domain=-2.82:5] plot(\x,{(-0--1*\x)/1});
+\draw [line width=0.4pt,dash pattern=on 5pt off 5pt,color=wqwqwq,domain=-2.82:5] plot(\x,{(-0--1*\x)/-1});
+\draw [->,color=wqwqwq] (1,1) -- (2,2);
+\draw [->,color=wqwqwq] (2,2) -- (3,3);
+\draw [->,color=wqwqwq] (3,3) -- (2,4);
+\draw [->,color=wqwqwq] (2,4) -- (1,5);
+\draw [->,line width=1.2pt,color=qqqqff] (0,0) -- (1,5);
+\draw (0.6,0.7) node[anchor=north west] {$1$};
+\draw (1.56,1.62) node[anchor=north west] {$2$};
+\draw (2.48,2.54) node[anchor=north west] {$3$};
+\draw (2.6,4.16) node[anchor=north west] {$1$};
+\draw (1.74,5.1) node[anchor=north west] {$2$};
+\begin{scriptsize}
+\fill [color=uuuuuu] (0,0) circle (1.5pt);
+\draw[color=uuuuuu] (0.1,0.26) node {$I$};
+\end{scriptsize}
+\end{tikzpicture}
+\caption{Vector with respect to different basis}
+\label{default}
+\end{center}
+\end{figure}
+
+
+% Given the basis ${\bf u}_1 = (3,2)^T, {\bf u}_2 = (1,1)^T$ of $U$, the vector $(2,3)^T$ with respect to the basis ${\bf u}_1, {\bf u}_2$ is the same as 
+
+
+ 
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[scale=0.5]{changeOfBasis} 
+   \caption{Vector $(3,2)^T$.  Note: this one is not the same as the other $(3,2)^T$ vector!}
+
+   \label{fig:example}
+\end{figure}
+ 
+
+
+
+ \subsection*{Standard  Basis to Arbitrary  Basis}
+To convert from the standard basis to any other arbitrary basis ${\bf u}_1, {\bf u}_2, \dots,  {\bf u}_n$, find the inverse of $U = \begin{bmatrix}{\bf u}_1 &	{\bf u}_2 	& \dots & {\bf u}_n \end{bmatrix}$.  That is, 
+
+\[ {\bf c} = U^{-1} {\bf x} \]   
+
+
+
+\begin{example}
+
+
+From the previous example, if $(3,2)_U^T \rightarrow (1,5)_E^T$ using the transition matrix 
+\[   \begin{bmatrix}  1 & 1\\ -1 & 1\end{bmatrix}  \]
+
+Then, from the equation, 
+
+  \[  \begin{bmatrix}  1 & 1\\ -1 & 1\end{bmatrix} \begin{bmatrix} 3\\2 \end{bmatrix} = \begin{bmatrix} 1\\5 \end{bmatrix}    \Longrightarrow    \begin{bmatrix} 3\\2 \end{bmatrix} = \begin{bmatrix}  1 & 1\\ -1 & 1\end{bmatrix}^{-1}   \begin{bmatrix} 1\\5 \end{bmatrix}   \]
+
+ 	%Let ${\bf u}_1 = (3,2)^T$ and ${\bf u}_2 = (1,1)$.  Take ${\bf x} = (7,4)^T$ (a vector with standard coordinates).  Find the coordinates of ${\bf x}$ with respect to ${\bf u}_1, {\bf u}_2$.  
+
+
+ 	
+	
+	%Since $U = ( {\bf u}_1, {\bf u}_2) =  \begin{bmatrix}  3 & 1 \\ 2 & 1 \end{bmatrix}$, then 
+	%\[  
+	%{\bf c} = U^{-1} {\bf x} = \begin{bmatrix}  1 & -1 \\ -2 &  3 \end{bmatrix} \begin{bmatrix} 7\\4 \end{bmatrix} = \begin{bmatrix} 3 \\ -2 \end{bmatrix} 
+	%\]
+	%That is, ${\bf x} = 3 {\bf u}_1 -2 {\bf u}_2$.  
+\end{example}
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\subsection*{Arbitrary basis to Arbitrary basis}
+
+To convert from the basis $[ {\bf v}_i]$ to $[{\bf u}_i]$ (See Figure \ref{fig:changeofbasis}):
+
+\begin{enumerate}
+	\item Convert to standard using matrix multiplication by $V$
+	\item Convert from standard to final basis using $U^{-1}$
+\end{enumerate}
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm, scale=1.25]
+\clip(-1.72,-0.66) rectangle (7.34,5.26);
+\draw (1.84,4.7) node[anchor=north west] {$V$};
+\draw (4.68,3.24) node[anchor=north west] {$U^{-1}$};
+\draw (1.0,2.25) node[anchor=north west] {$U^{-1}V$};
+\draw (-1.45,4.3) node[anchor=north west] {$[{\bf v}_1, {\bf v}_2]$};
+\draw (4.06,4.3) node[anchor=north west] {$[{\bf e}_1, {\bf e}_2]$};
+\draw (3.96,1.5) node[anchor=north west] {$[{\bf u}_1, {\bf u}_2]$};
+\draw [->] (-0.06,4) -- (4.04,4);
+\draw [->] (-0.26,3.56) -- (3.9,1.1);
+\draw [->] (4.4,3.8) -- (4.4,1.34);
+\end{tikzpicture}
+\caption{Change of Basis Diagram}
+\label{fig:changeofbasis}
+\end{center}
+\end{figure}
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\begin{example}
+	Find the transition matrix from $[{\bf v}_1, {\bf v}_2]$ to $[{\bf u}_1, {\bf u}_2]$ where 
+	\[  {\bf v}_1 =  \begin{bmatrix}  5 \\ 2  \end{bmatrix},      {\bf v}_2 = \begin{bmatrix} 7 \\ 3 \end{bmatrix} \hspace{0.5in} \text{ and }  \hspace{0.5in}   {\bf u}_1 =  \begin{bmatrix}  3 \\ 2  \end{bmatrix},      {\bf u}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}  \]
+	
+	\textbf{Solution}:   
+	
+	
+	\[ S =  U^{-1} V =  \begin{bmatrix}  1 & -1 \\ -2 & 3   \end{bmatrix}    \begin{bmatrix}  5 & 7 \\ 2 & 3   \end{bmatrix}   =  \begin{bmatrix}  3 & 4 \\ -4 & -5   \end{bmatrix}  \]
+\end{example}
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+\begin{example}
+	Let
+	\[ {\bf v}_1 =  \begin{bmatrix}  1 \\ 1 \\1  \end{bmatrix},  {\bf v}_2 =  \begin{bmatrix}  2 \\ 3 \\2  \end{bmatrix},  {\bf v}_3 =  \begin{bmatrix}  1 \\ 5 \\ 4  \end{bmatrix}  \]
+	and
+	\[ {\bf u}_1 =  \begin{bmatrix}  1 \\ 1 \\0  \end{bmatrix},  {\bf u}_2 =  \begin{bmatrix}  1 \\ 2 \\ 0  \end{bmatrix},  {\bf u}_3 =  \begin{bmatrix}  1 \\ 2 \\ 1  \end{bmatrix}  \]
+	
+	then $E = \{ {\bf v}_1, {\bf v}_2, {\bf v}_3 \}$ and $F =  \{ {\bf u}_1, {\bf u}_2, {\bf u}_3 \}$ are ordered bases for  $\mathbb{R}^3$.  If 
+	\[ [{\bf x}]_E = (3, 2, -1)^T  \; \text{ and } \;  [{\bf y}]_E = (1, -3, 2)^T \]
+	Find the transition matrix from $E$ to $F$ and use it to find the doordinates of ${\bf x}$ and ${\bf y}$ with respect to the ordered basis $F$.  
+	
+	
+	
+	\textbf{Solution}:  Matrix $V$ consists of the basis vectors ${\bf v}_i$ and columns of matrix $U$ contains ${\bf u}_i$.  Find the inverse $U^{-1}$.  The transition matrix $S = U^{-1} V$.  
+	
+	\[  [{\bf x}]_F = S [{\bf x}]_E \]
+	and 
+	\[  [{\bf y}]_F = S [{\bf y}]_E \]
+	
+	
+\end{example}
+
+
+
+
+
+
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+
+
+
+
+% DEFINITION 
+\begin{tcolorbox}[colback=white!10!,colframe=gray!15!]
+	\begin{definition}
+		Let $V$ be a vector space and let  $E = \{ {\bf v}_1, {\bf v}_2,  \dots, {\bf v}_n \}$  be an ordered basis for $V$.  If ${\bf v}$ is any element of $V$, then ${\bf v}$ can be written in the form
+		
+		
+		 \[   {\bf v}   =  c_1 {\bf v}_1 + c_2 {\bf v}_2 + \cdots + c_n {\bf v}_n  \]
+
+where ${\bf c} = (c_1, c_2, \dots, c_n)^T$ in $\mathbb{R}^n$ is the \textbf{coordinate vector} of ${\bf v}$ with respect to the ordered basis $E$ and denoted $[{\bf v}]_E$.  The $c_i$'s are called the \textbf{coordinates} of ${\bf v}$ relative to $E$.   
+
+
+	\end{definition}
+	 
+\end{tcolorbox}
+
+
+
+\subsubsection*{Method to Convert}
+\begin{enumerate}
+	\item Write the coordinate vectors of the new basis with respect to the standard basis.
+	\item Use these coordinate vectors as the columns of the transition matrix. 
+\end{enumerate}
+
+
+  
+
+\rule[0.01in]{\textwidth}{0.0025in}
+% ---------------------------------------------------- % 
+
+
+\begin{example}
+	Change basis in $P_4$ from $E=[1, x, x^2, x^3]$ to $C=[1, x, 2x^2 - 1, 4x^3-3x]$ (the Chebyshev basis\footnote{I use this basis in my research for finding fast approximation methods to differential equation}).    First, find the transition matrix from alternative basis to standard basis, then invert.
+	
+	\[   \begin{cases}
+		[1]_E &= (1,0,0,0)^T\\
+		[x]_E &= (0,1,0,0)^T\\
+		[2x^2 -1]_E &= (-1,0,2,0)^T\\
+		[4x^3-3x]_E &=(0,-3,0,4)^T
+	\end{cases}  \]
+	
+	Therefore, 
+	\[  S = \begin{bmatrix}[cccc]   1 & 0 & -1 & 0\\\ 0  & 1  & 0 & -3 \\ 0  & 0  & 2 & 0\\ 0 & 0 & 0 & 4 \end{bmatrix}  \]
+\end{example}
+
+
+\section*{Next time...}
+Section 3.6: Row and Column Space
+
