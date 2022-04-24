@@ -1,0 +1,167 @@
+
+
+% Book Sections / Curriculum 
+\def\book{leon}
+% ---------------------------------------------------- % 
+% 1.1 - Vectors and Linear Combinations
+\def \booksectionnumber{1.1}
+\def \filename{1.1}
+\def \title{Vectors and Linear Combinations }
+
+
+% 1.2 - Lengths and Dot Products
+\def \booksectionnumber{1.2}
+\def \filename{1.2}
+\def \title{Lengths and Dot Products}
+
+% 1.3 - Matrices
+\def \booksectionnumber{1.3}
+\def \filename{1.3}
+\def \title{Matrices}
+
+
+% 1.4 - Matrix Algebra
+\def \booksectionnumber{1.4}
+\def \filename{1.4}
+\def \title{Matrix Algebra}
+
+
+
+
+
+% 1.5 - Elementary Matrices
+\def \booksectionnumber{1.6}
+\def \filename{1.6}
+\def \title{Block Matrices}
+
+
+
+
+% 2.1 - Solving Linear Equations
+\def \booksectionnumber{2.1}
+\def \filename{2.1}
+\def \title{Solving Linear Equations}
+
+
+% 2.2 - The Idea of Elimination
+\def \booksectionnumber{2.2}
+\def \filename{2.2}
+\def \title{The Idea of Elimination }
+
+
+ 
+% 2.3 - Elimination
+\def \booksectionnumber{2.3}
+\def \filename{2.3}
+\def \title{Elimination using Matrices }
+
+
+% 2.4 - Rules for Matrix Operations
+\def \booksectionnumber{2.4}
+\def \filename{2.4}
+\def \title{Rules for Matrix Operations }
+
+
+
+% 2.6 - Elimination
+\def \booksectionnumber{2.6}
+\def \filename{2.6}
+\def \title{Elimination $=$ Factorization: $A=LU$ }
+
+
+
+
+
+% 3.4 - Independence, basis, and dimension
+\def \booksectionnumber{3.4}
+\def \filename{3.4}
+\def \title{Independence, basis, and dimension }
+
+
+
+% 4.1 - Orthogonality of the Four Subspaces
+\def \booksectionnumber{4.1}
+\def \filename{4.1}
+\def \title{Orthogonality of the Four Subspaces}
+
+
+
+
+% 4.1 - SVD
+\def \booksectionnumber{7.3}
+\def \filename{7.3}
+\def \title{Principle Component Analysis}
+
+
+% 4.1 - SVD
+\def \booksectionnumber{SVD}
+\def \filename{SVD}
+\def \title{Sym. mats, diagonalizability, and SVD}
+
+
+
+
+
+% ----------------------------------------------- % 
+%			CURRENT SECTION        %
+  
+%  
+\def \booksectionnumber{4.1}
+\def \filename{4.1}
+\def \title{Linear Transformations}
+
+
+
+
+
+% ----------------------------------------------- % 
+
+
+% Course/Instructor/Semester Information
+\def \course{MAT220 - Applied Linear Algebra}
+\def \instructor{Quinlan}
+\def \semester{Spring 2022}
+\def \showsolutions{0}
+% ---------------------------------------------------- % 
+
+
+
+
+
+\documentclass[11pt]{exam}
+
+
+
+% ----------------------------------------------- %
+\input{includes}
+% ----------------------------------------------- % 
+ 
+
+
+
+
+
+
+
+\newcommand{\hwheadings}[3]{
+{\bf \title} \hfill {{\bf  #1 }}\\
+{{\bf } #2} \hfill {{\bf } #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+ \begin{document}
+\hwheadings{\course}{Section \booksectionnumber}{\semester}
+
+
+% content
+	\input{\book/\filename}
+    % \input{problems/1.1}
+    % \input{lecsums}
+    
+    
+% Biblio
+\bibliographystyle{abbrv}%Choose a bibliograhpic style
+\bibliography{references}  
+ 
+ \end{document}
+
